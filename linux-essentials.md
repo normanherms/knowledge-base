@@ -1,32 +1,54 @@
-# LPIC 010-160 Linux Essentials (Grundlagen)
+# Linux Essentials Cheatbook
 
-## What is Linux
+---
+
+## Anmerkung
+
+Dies ist ein persönliches Cheatbook.
+Es dient als Nachschlagewerk für meine eigenen Lerninhalte und erhebt keinen Anspruch auf Vollständigkeit.
+Die Inhalte wurden teilweise mit Unterstützung von ChatGPT geglättet und ergänzt.
+Auch wenn ich auf Richtigkeit achte, können Fehler enthalten sein.
+
+---
+
+## Einführung
+
+* Linux = Betriebssystemkern (Kernel) + Programme.
+* Linux ist Open Source und von Unix inspiriert.
+* Inhalte: Kernel, Distributionen, Dateisystem, Shell, Netzwerk, Rechteverwaltung.
+* Vorteil: Flexibel, stabil, weit verbreitet (Server, Embedded, Cloud).
+
+---
+
+## LPIC 010-160 Linux Essentials (Grundlagen)
+
+### What is Linux
 
 * Linux ist ein Kernel
 * Kernel ist das Hirn eines OS
 * Der Kernel ist ein Teil des OS
 * Um den Kernel herum sind Programme
 
-## Distribution
+### Distribution
 
 * Es gibt eine Distro-Familie
 * Beispiel: Ubuntu ist Debian-basiert
 * Eine Distro basiert oft auf einer anderen
 * Größter Unterschied ist die Paketverwaltung
 
-## Historie
+### Historie
 
 * Linus Torvalds hat Linux 1991 programmiert
 * Linux war inspiriert von Unix
 * Linux ist zusammengesetzt aus Linux und Unix
 * Linux enthält keine Unix-Befehle bzw. Unix-Code
 
-## Distro-Kurzübersicht
+### Distro-Kurzübersicht
 
 * Red Hat (Server & Enterprise)
 * SUSE (Enterprise, aber auch downloadbar)
 
-## Installationstypen
+### Installationstypen
 
 * Embedded (Built-in)
 * Android (Android Inc. bzw. Google)
@@ -35,7 +57,7 @@
 
 ---
 
-# Abschnitt 1: First Hand-on
+## Abschnitt 1: First Hand-on
 
 * Linux Kernel laden von kernel.org
 
@@ -43,7 +65,7 @@
 
 ---
 
-## Interessante Software für Linux
+### Interessante Software für Linux
 
 * Firefox, Google Chrome, LibreOffice
 * Gimp (ähnlich Photoshop)
@@ -51,19 +73,19 @@
 * Audacity (Audio)
 * ImageMagick (Image Processing)
 
-## Server Packages
+### Server Packages
 
 * Apache (Webserver)
 * NFS, Samba (Fileserver)
 * Domain Controller
 * Nextcloud, Owncloud
 
-## Netzwerk
+### Netzwerk
 
 * DHCP (IP-Vergabe)
 * DNS
 
-## Programmierung
+### Programmierung
 
 * C (Speed)
 * Python (leicht zu erlernen)
@@ -73,22 +95,22 @@
 * Shell (Scripting in Shell)
 * PHP (Webentwicklung)
 
-### Begriffe
+#### Begriffe
 
 * Compiled = Source Code zu Standalone machen
 * Interpreted = Programm → Ausführung, oft als Scripting Language bezeichnet
 
 ---
 
-# Abschnitt 2: Software & Desktop
+## Abschnitt 2: Software & Desktop
 
-## Software-Management
+### Software-Management
 
 * Software wird aus Repositories installiert
 * Nutzung von Paketmanagern (z. B. Gnome Software)
 * Installationen können per Desktop oder Terminal erfolgen
 
-## Desktop-Komponenten
+### Desktop-Komponenten
 
 * Display Manager: GDM, LightDM, SDDM (Login Manager)
 * Window Manager: openbox, KWin, Mutter, Xfwm
@@ -100,7 +122,7 @@
 
 ---
 
-# Abschnitt 3: Hands-on
+## Abschnitt 3: Hands-on
 
 * Linux vom Stick booten (z. B. fedora-project.org)
 * Download einer Distro → Media Writer
@@ -109,9 +131,9 @@
 
 ---
 
-# Abschnitt 4: Kommandozeile
+## Abschnitt 4: Kommandozeile
 
-## Shell-Beispiele
+### Shell-Beispiele
 
 * zsh
 * csh
@@ -120,11 +142,11 @@
 
 > Alles was man mit einer GUI machen kann, kann man in der Shell auch machen.
 
-## Aufbau Kommandozeile
+### Aufbau Kommandozeile
 
 Prompt-Beispiel:
 
-```
+```bash
 zimtadmin@zimtbox:~$
 ```
 
@@ -132,7 +154,7 @@ zimtadmin@zimtbox:~$
 * Hostname
 * Arbeitsverzeichnis
 
-## Einfache Kommandos
+### Einfache Kommandos
 
 * ls (zeigt das Arbeitsverzeichnis an)
 * pwd (zeigt das aktuelle Verzeichnis)
@@ -141,9 +163,9 @@ zimtadmin@zimtbox:~$
 * rm (löschen von Dateien/Ordnern, `-r` für Verzeichnis)
 * echo (zeigt das nachfolgende in der Shell)
 
-## Aufbau eines Kommandos (Syntax)
+### Aufbau eines Kommandos (Syntax)
 
-```
+```bash
 ls -l Dokumente
 ```
 
@@ -151,17 +173,17 @@ ls -l Dokumente
 * Option
 * Argument
 
-## Quoting
+### Quoting
 
 Beispiel:
 
-```
+```bash
 mkdir Meine Notizen
 ```
 
 * erstellt 1 Ordner „Meine“ und 1 Ordner „Notizen“
 
-```
+```bash
 mkdir "Meine Notizen"
 ```
 
@@ -169,32 +191,32 @@ mkdir "Meine Notizen"
 
 * Backslash (`\`) = Escape-Zeichen, verhindert Interpretation von Leerzeichen
 
-## Variablen
+### Variablen
 
 * Beispiel: `echo $HOME` → zeigt das Homeverzeichnis
 * Das `$`-Zeichen beschreibt eine Variable
 * `" "` doppelte Anführungszeichen werden anders interpretiert als `' '` einfache Anführungszeichen
 
-### Variablen erstellen
+#### Variablen erstellen
 
 * Beispiel: `NAME="Norman Herms"`
 * Anzeigen mit `echo $NAME`
 * Eine Variable besteht bis zum Schließen der Shell-Session
 * Environment-Variablen anzeigen mit `env`
 
-## Pfade
+### Pfade
 
 * Absolute Pfade: beginnen vom Root-Verzeichnis, z. B. `/home/zimtadmin/Bilder`
 * Relative Pfade: beziehen sich auf aktuellen Ordner
 * Linux-Dateisystem ist baumartig, ähnlich Windows
 * Linux ist **case-sensitive** (Groß- und Kleinschreibung beachten)
 
-## Text in Dateien
+### Text in Dateien
 
 * `echo "Hello World" > file.txt` (Text überschreiben)
 * `echo "Hello World" >> file.txt` (Text anhängen)
 
-### Kommando-Sheet
+#### Kommando-Sheet
 
 * touch (erstellt Dateien)
 * env (zeigt Environment-Variablen)
@@ -206,9 +228,9 @@ mkdir "Meine Notizen"
 
 ---
 
-# Abschnitt 5: Dokumentation
+## Abschnitt 5: Dokumentation
 
-## Man Pages
+### Man Pages
 
 * `man` = Manual Page eines Kommandos
 
@@ -232,21 +254,21 @@ mkdir "Meine Notizen"
 
 ---
 
-# Abschnitt 6: Datenmanipulation
+## Abschnitt 6: Datenmanipulation
 
-## Kompression
+### Kompression
 
 * Daten komprimieren spart Speicher
 * Durch Entfernen redundanter Daten
 
-### Archivierung
+#### Archivierung
 
 * `tar` = Archivierung, keine Kompression außer in Kombination mit gzip
 * Beispiel: `tar -cf mybackup.tar Documents.bak` (packen)
 * `tar -xf mybackup.tar` (entpacken)
 * `tar -tvf mybackup.tar` (Inhalt anzeigen)
 
-### Arten der Komprimierung
+#### Arten der Komprimierung
 
 * Lossy: Datenverlust möglich
 * Lossless: kein Datenverlust
@@ -257,7 +279,7 @@ mkdir "Meine Notizen"
 
 ---
 
-# Abschnitt 7: Datenströme
+## Abschnitt 7: Datenströme
 
 * 0: stdin (Eingaben vom User)
 * 1: stdout (normale Ausgaben)
@@ -265,7 +287,7 @@ mkdir "Meine Notizen"
 
 Beispiel für Umleitung:
 
-```
+```bash
 find . -type f -name issue.net 2>errors.txt
 ```
 
@@ -274,7 +296,7 @@ find . -type f -name issue.net 2>errors.txt
 
 ---
 
-# Abschnitt 8: grep
+## Abschnitt 8: grep
 
 * `grep Wort` → Ausgabe mit Wort
 * `grep -v Wort` → Ausgabe ohne Wort
@@ -287,27 +309,27 @@ find . -type f -name issue.net 2>errors.txt
 
 ---
 
-# Abschnitt 9: Bash Scripting
+## Abschnitt 9: Bash Scripting
 
-## Basics
+### Basics
 
 * Editor z. B. `nano script.sh`
 * Erste Zeile: `#!/bin/bash` (Shebang)
 * Beispiel:
 
-```
+```bash
 echo "Hello World"
 ```
 
 * Skripte müssen ausführbar gemacht werden:
 
-```
+```bash
 sudo chmod +x script.sh
 ```
 
 * `sudo` im Script sparsam einsetzen (Sicherheit)
 
-## Hands-on
+### Hands-on
 
 * Download mit `wget`
 * `.tar.gz` entpacken: `tar -xzf file.tar.gz`
@@ -318,9 +340,9 @@ sudo chmod +x script.sh
 
 ---
 
-# Abschnitt 10: Linux als Betriebssystem
+## Abschnitt 10: Linux als Betriebssystem
 
-## Enterprise vs. Consumer Linux
+### Enterprise vs. Consumer Linux
 
 * Enterprise Linux: stabil und zuverlässig
 * Consumer Linux: aktueller, aber weniger stabil
@@ -342,13 +364,13 @@ Beispiele Consumer Distros:
 
 ---
 
-# Abschnitt 11: Hardware
+## Abschnitt 11: Hardware
 
 * Keine Aufzeichnungen vorhanden, Modul wurde aber behandelt
 
 ---
 
-# Abschnitt 12: Linux Dateisystem
+## Abschnitt 12: Linux Dateisystem
 
 * Das Dateisystem ist wie ein Baum aufgebaut, startet bei `/`
 * Jeder Ordner in Linux hat eine Funktion:
@@ -365,7 +387,7 @@ Beispiele Consumer Distros:
 
 ---
 
-# Abschnitt 13: Netzwerk
+## Abschnitt 13: Netzwerk
 
 * Link Layer: TCP/IP basiert, Kabel oder Funk überträgt Bits
 * Network Layer: Routing, IP sorgt für richtige Adresse
@@ -377,15 +399,15 @@ Beispiele Consumer Distros:
 
 ---
 
-# Abschnitt 14: Ressourcen Management
+## Abschnitt 14: Ressourcen Management
 
-## User und Gruppen
+### User und Gruppen
 
 * User-Datenbank: `/etc/passwd`
 * Passwortdatei: `/etc/shadow`
 * Gruppendatei: `/etc/group`
 
-### User Management
+#### User Management
 
 * User erstellen: `sudo useradd user`
 * Passwort ändern: `passwd user` (mit sudo)
@@ -393,12 +415,12 @@ Beispiele Consumer Distros:
 
 ---
 
-# Abschnitt 15: Zugriffsrechte
+## Abschnitt 15: Zugriffsrechte
 
 * Typen: d = Ordner, - = Datei
 * Rechte des Users, der Gruppe und andere
 
-```
+```text
 drwxr-xr-x
 ```
 
@@ -426,9 +448,9 @@ Sonderzeichen:
 
 ---
 
-# Abschnitt 16: Prozesse & Ressourcen
+## Abschnitt 16: Prozesse & Ressourcen
 
-## Monitoring
+### Monitoring
 
 * `du -h` = Speicher der Ordner
 * `top` = Prozessübersicht
@@ -439,11 +461,11 @@ Sonderzeichen:
 
 **Quiz:** 3 von 5
 
-## Speicher
+### Speicher
 
 * RAM & Swap prüfen: `free -m`
 * Festplatte prüfen: `df -h`
 
 ---
 
-# Kursende ✅
+## Kursende ✅
