@@ -1,12 +1,13 @@
-# Cheatbook zu meinen Kursen
+# Persönliche Knowledge-Base
 
 ## Einführung
 
 Dies ist meine persönliche Dokumentation zu allen Lerninhalten auf Udemy und anderen Quellen.
-Bisherige Inhalte wurden händisch aufgezeichnet und anschließend digitalisiert.
+Bisherige Inhalte wurden händisch aufgezeichnet und anschließend digitalisiert. Keine dieser Inhalte wurde aus den Kursen Wort für Wort aufgeschrieben oder transkribiert.
 
-**Ziele:**
+## Ziele
 
+- stetiges lernen zu dokumentieren
 - Eine überall verfügbare, reduzierte Dokumentation auf das Wesentliche
 - Schnellere und bessere Schreibroutine auf verschiedenen Tastaturen
 - Bessere Beherrschung von Markdown
@@ -34,8 +35,7 @@ Die Inhalte selbst stammen aus meinen eigenen Mitschriften und Kursaufzeichnunge
 
 ## Inhalte (bisher)
 
+- [Linux Essentials](linux-essentials.md)
 - [Git](git.md)
 - [Ansible](ansible.md)
 - [Bash](bash.md) *(Platzhalter)*
-- [Linux Basics](linux.md) *(Platzhalter)*
-- [K3s](k3s.md) *(Platzhalter)*
