@@ -36,6 +36,7 @@ Die Inhalte selbst stammen aus meinen eigenen Mitschriften und Kursaufzeichnunge
 ## Inhalte (bisher)
 
 - [Linux Essentials](linux-essentials.md)
+- [LPIC_101](lpic_101.md)
 - [Git](git.md)
 - [Ansible](ansible.md)
 - [Bash](bash.md) *(Platzhalter)*
