@@ -203,7 +203,7 @@ Auch wenn ich auf Richtigkeit achte, können Fehler enthalten sein.
 * Partitionen: `/dev/sda1`, `/dev/sda2`, usw.
 * Maximal 4 primäre Partitionen, Rest logisch (beginnend bei `/dev/sda5`).
 
-### Wichtige Befehle
+### Weitere Befehle
 
 * `lsblk` → zeigt Blockdevices.
 * `df` → zeigt Speicherbelegung.
