@@ -2,108 +2,189 @@
 
 ## Ziel
 
-Grundverständnis für Skript- und API-Automatisierung.
-Dieses Modul erweitert die Grundlagenarbeit aus Modul 00 und führt in die praktische Automatisierung mit Python ein.
+Grundverständnis für Skript- und API-Automatisierung entwickeln.
+Dieses Modul baut auf den Shell- und Systemkenntnissen aus **Modul 00** auf und erweitert sie um Automatisierung mit **Python**.
+Der Fokus liegt auf pragmatischer Skriptentwicklung, sauberem Code und API-Kommunikation im DevOps-Kontext.
 
 ---
 
-## Kerninhalte
+## Lernorientierung
 
-| Bereich             | Themen                                                  |
-| ------------------- | ------------------------------------------------------- |
-| Syntax & Strukturen | Datentypen, Variablen, Schleifen, Bedingungen           |
-| Dateiverarbeitung   | Einlesen und Schreiben von CSV-, JSON- und YAML-Dateien |
-| Netzwerk & APIs     | HTTP-Requests, REST, JSON-Parsing                       |
-| Systemautomation    | subprocess, os, Logging, ArgumentParser                 |
-| Testing & Linting   | pytest, black, flake8                                   |
+Ziel für Selbstlernende:
+Python verstehen, Skripte schreiben, externe Datenquellen verarbeiten und Abläufe automatisieren.
 
----
+Am Ende dieses Moduls solltest du:
 
-## Abgleich mit roadmap.sh/devops
-
-| roadmap.sh-Sektion | Abgedeckt durch             | Status |
-| ------------------ | --------------------------- | ------ |
-| python-scripting   | Syntax & Strukturen         | ✅      |
-| working-with-apis  | Netzwerk & APIs             | ✅      |
-| automation         | Systemautomation            | ✅      |
-| testing            | Testing & Linting           | ✅      |
-| version-control    | Git-Integration vorbereitet | 🔜     |
+1. Python-Code lesen, verstehen und erweitern können
+2. Daten aus Dateien und APIs einlesen und verarbeiten
+3. Skripte strukturiert und reproduzierbar ausführen
+4. Code prüfen, testen und sauber dokumentieren
 
 ---
 
-## Theoriephase
+## Themenüberblick
 
-Ziel: Verständnis grundlegender Python-Konzepte und deren Einsatz im DevOps-Kontext.
+| Bereich             | Lerninhalte & Schwerpunkte                                                        |
+| ------------------- | --------------------------------------------------------------------------------- |
+| Syntax & Strukturen | Datentypen, Variablen, Schleifen, Bedingungen, Funktionen, Module                 |
+| Dateiverarbeitung   | CSV, JSON, YAML lesen und schreiben                                               |
+| Netzwerk & APIs     | HTTP-Requests, REST-Prinzip, JSON-Parsing, Fehlerbehandlung                       |
+| Systemautomation    | subprocess, os, Logging, ArgumentParser, CLI-Tools mit Typer                      |
+| Testing & Linting   | pytest, black, flake8, saubere Formatierung und Stilprüfung                       |
 
-* Aufbau und Syntax der Sprache Python
-* Unterschied zwischen Skripten und Modulen
-* Umgang mit Bibliotheken und virtuellen Umgebungen
-* Grundlagen der API-Kommunikation (GET, POST, JSON)
-* Logging und Fehlerbehandlung für stabile Skriptausführung
-
----
-
-## Praxisphase
-
-Ziel: Eigene Automatisierungsskripte erstellen und testen.
-
-1. Installation von Python 3 und Pip
-2. Einrichtung einer virtuellen Umgebung mit venv
-3. Schreiben eines Skripts zur API-Abfrage (z. B. Wetterdaten, GitHub API)
-4. Nutzung von os und subprocess zur Systemsteuerung
-5. Formatierung und Test des Codes mit black und pytest
-6. Dokumentation der Skripte und Ausgaben in Markdown
+> Orientierung: Inhalte decken die Python-Abschnitte der [DevOps-Roadmap auf roadmap.sh](https://roadmap.sh/devops) ab.
 
 ---
 
-## Projektphase
+## Lernziele nach Themenfeld
 
-Beispielprojekt:
-Ein Python-Skript, das Systemlogs oder Statusdaten regelmäßig ausliest, über eine API versendet oder in eine Datei schreibt.
-Optional: Benachrichtigung per E-Mail oder Webhook.
+### 1. Syntax & Strukturen
 
-Ziel: Vollautomatisierter Prozess mit Fehlerbehandlung und Logging.
+**Was lernen:**
+
+- Aufbau eines Python-Skripts
+- Datentypen (int, str, list, dict)
+- Kontrollstrukturen (if, for, while)
+- Funktionen, Module, Import-Struktur
+
+**Wie lernen:**
+
+- Mit der interaktiven REPL (`python3`) experimentieren
+- Eigene Mini-Skripte schreiben und kommentieren
+
+**Beispiele:**
+
+- Schleife über eine Liste von Dateien
+- Funktion zur Ausgabe von Systeminformationen
 
 ---
 
-## Reviewphase
+### 2. Dateiverarbeitung
 
-Reflexion:
+**Was lernen:**
 
-* Kann ich API-Daten verarbeiten und auswerten?
-* Nutze ich Funktionen und Module effizient?
-* Erfüllt mein Skript die Prinzipien sauberer Automatisierung?
+- Struktur von CSV-, JSON- und YAML-Dateien
+- Lesen, Schreiben und Validieren von Inhalten
 
-Empfohlene Tools zur Vertiefung:
-requests, json, logging, black, pytest, typer
+**Wie lernen:**
+
+- Eigene Datenquelle (z. B. Logdateien oder Speedtest-Ergebnisse) verarbeiten
+- Daten in ein neues Format umwandeln
+
+**Beispiele:**
+
+- JSON-Datei einlesen und Werte ausgeben
+- YAML-Datei in CSV konvertieren
 
 ---
 
-## Ressourcen
+### 3. Netzwerk & APIs
 
-| Thema             | Quelle                                                                                                 |
-| ----------------- | ------------------------------------------------------------------------------------------------------ |
-| Python Grundlagen | [https://www.python.org/about/gettingstarted/](https://www.python.org/about/gettingstarted/)           |
-| API Nutzung       | [https://realpython.com/api-integration-in-python/](https://realpython.com/api-integration-in-python/) |
-| Automatisierung   | [https://automatetheboringstuff.com](https://automatetheboringstuff.com)                               |
-| Testing           | [https://docs.pytest.org](https://docs.pytest.org)                                                     |
-| Linting           | [https://black.readthedocs.io](https://black.readthedocs.io)                                           |
+**Was lernen:**
+
+- Aufbau einer API (REST, Endpunkte, HTTP-Statuscodes)
+- Datenabruf mit `requests`
+- Parsing von JSON und Fehlerbehandlung
+
+**Wie lernen:**
+
+- Öffentliche APIs nutzen (z. B. OpenWeatherMap, GitHub, httpbin.org)
+- Skript, das Daten abfragt und speichert
+
+**Beispiele:**
+
+- Wetterdaten abrufen und lokal speichern
+- GitHub-Repo-Infos per Script abfragen
+
+---
+
+### 4. Systemautomation
+
+**Was lernen:**
+
+- Prozesse starten und steuern mit `subprocess`
+- Dateisystemzugriff mit `os`
+- Logging und ArgumentParser nutzen
+
+**Wie lernen:**
+
+- Skripte mit Parametern ausführen
+- Logs für jede Ausführung speichern
+
+**Beispiele:**
+
+- Script, das `ping` ausführt und Ergebnisse loggt
+- Backup-Prozess mit Logging und Exit-Codes
+
+---
+
+### 5. Testing & Linting
+
+**Was lernen:**
+
+- Grundlagen automatischer Tests mit `pytest`
+- Codequalität mit `black` und `flake8` prüfen
+
+**Wie lernen:**
+
+- Einfache Unit-Tests schreiben
+- Testausgabe und Formatierung im Terminal verstehen
+
+**Beispiele:**
+
+- Test für JSON-Verarbeitung
+- Skriptformatierung mit `black .`
+
+---
+
+## Praxisprojekt
+
+**Aufgabe:**
+Ein Python-Skript liest Systeminformationen oder Logdaten aus und sendet sie per API oder Webhook an ein Zielsystem.
+Das Skript läuft automatisch (Cron oder systemd), protokolliert Fehler und ist formatiert sowie getestet.
+
+**Lernziel:**
+Ein wartbares, robustes Automationsskript mit sauberem Code, Logging und Testabdeckung.
+
+---
+
+## Selbstreflexion
+
+Am Ende solltest du beantworten können:
+
+- Kann ich Python-Skripte modular aufbauen und wiederverwenden?
+- Verstehe ich den Ablauf einer API-Kommunikation?
+- Habe ich ein automatisiertes Skript mit Logging und Tests realisiert?
+
+---
+
+## Ressourcen (frei & geprüft)
+
+| Kategorie | Format | Quelle / Beschreibung |
+| ---------- | ------- | --------------------- |
+| Python Grundlagen | Interaktiv | [PythonTutor](https://pythontutor.com) – visualisiert Code und Logikschritte |
+| Syntax & Praxis | Text | [W3Schools Python Tutorial](https://www.w3schools.com/python/) – übersichtlich und praxisnah |
+| Automation | Buch | [Automate the Boring Stuff](https://automatetheboringstuff.com) – freies Buch mit Praxisbeispielen |
+| APIs & Requests | Artikel | [Real Python: API Integration](https://realpython.com/api-integration-in-python/) |
+| Tests | Doku | [pytest Documentation](https://docs.pytest.org) |
+| Linting & Format | Doku | [Black – Code Formatter](https://black.readthedocs.io) |
+| DevOps-Integration | Video | [Python for DevOps – freeCodeCamp](https://www.youtube.com/watch?v=9s0ANx6Dwjc) (~2 h Grundlagen + Praxis) |
+| Datenformate | Video | [JSON, CSV, YAML Explained – Tech With Tim](https://www.youtube.com/watch?v=9N6a-VLBa2I) (~20 min) |
+| Podcast | Audio | [Talk Python To Me – Automate with Python](https://talkpython.fm/episodes/show/380) |
 
 ---
 
 ## Ergebnis
 
-Am Ende dieses Moduls hast du:
+Am Ende von Modul 01 hast du:
 
-* Ein funktionierendes Python-Skript zur Prozess- oder API-Automatisierung
-* Verständnis für Logging, Testing und Fehlerbehandlung
-* Eine saubere, dokumentierte Python-Umgebung im Git-Repository
-* Grundlage für die Integration in CI/CD-Pipelines (Modul 03)
-
----
-
-Nächster Schritt: Modul 02 – Versionsverwaltung
+- ein lauffähiges Python-Automationsskript,
+- Verständnis für APIs, Datenformate und Prozesssteuerung,
+- Logging, Testing und Linting implementiert,
+- ein dokumentiertes Python-Repo mit klarer Struktur,
+- die Grundlage für CI/CD-Integration (Modul 03).
 
 ---
 
-🕓 2025-10-12 20:49 | §devops §modul1 §python
+**Weiterführend:** Modul 02 – Versionsverwaltung
+**geändert am 2025-10-14**
