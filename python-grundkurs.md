@@ -4,11 +4,10 @@
 
 ## Anmerkung
 
-Dies ist ein persönliches Cheatbook.
-Es dient als Nachschlagewerk für meine eigenen Lerninhalte im Rahmen des Python-Grundkurses.
-Die Inhalte wurden teilweise mit Unterstützung von ChatGPT geglättet und erweitert.
-Auch wenn ich auf Richtigkeit achte, können Fehler enthalten sein.
-Es dient nicht nur als Befehlsübersicht, sondern als erklärendes Nachschlagewerk mit Beispielen, Kontext und Praxisbezug.
+Dieses Cheatbook basiert auf dem von ChatGPT (GPT-5) erstellten Python-Grundkurs.
+Es dokumentiert die Lerninhalte und Übungen der Module 1.0 bis 1.5 in fortlaufender, praxisnaher Form.
+Die Aufzeichnungen, Beispiele und Erklärungen wurden während des Lernprozesses automatisch erstellt und anschließend geglättet.
+Ziel ist eine klare, nachvollziehbare Darstellung der Python-Grundlagen – nicht nur als Befehlsliste, sondern als erklärendes Nachschlagewerk mit Kontext und Struktur.
 
 ---
 
@@ -82,7 +81,7 @@ print("Python läuft! Willkommen im Grundkurs.")
 
 ## Modul 1.1 – Variablen & Datentypen
 
-**Kernkonzept:** Variablen speichern Werte. Python erkennt den Typ automatisch.
+**Kernkonzept:** Variablen speichern Werte. Python erkennt den Typ automatisch. Variablen sind Namen, die auf Werte im Speicher zeigen. Sie können jederzeit überschrieben oder neu zugewiesen werden.
 
 ```python
 name = "Norman"
@@ -122,79 +121,195 @@ zahl = int("10")
 
 ## Modul 1.2 – Operatoren & Ausdrücke
 
-**Ziel:** Mit Variablen rechnen und logische Vergleiche durchführen.
+**Ziel:**
+Verstehen, wie Python Werte miteinander verrechnet, vergleicht und kombiniert.
+Ein Ausdruck ist dabei **jede Anweisung, die zu einem Wert führt** – z. B. `3 + 4` oder `a > b`.
 
-```python
-a = 3
-b = 4
+---
 
-print(f"Addition: {a + b}")
-print(f"Subtraktion: {a - b}")
-print(f"Multiplikation: {a * b}")
-print(f"Division: {round(a / b, 1)}")
-```
+### 1. Arithmetische Operatoren
 
-**Arithmetische Operatoren:** +  -  *  /  //  %  **
+Verwenden wir zum Rechnen mit Zahlen (int oder float).
 
-**Vergleiche:** ==  !=  <  >  <=  >=
+| Operator | Bedeutung                       | Beispiel | Ergebnis |
+| -------- | ------------------------------- | -------- | -------- |
+| `+`      | Addition                        | `3 + 2`  | `5`      |
+| `-`      | Subtraktion                     | `5 - 2`  | `3`      |
+| `*`      | Multiplikation                  | `4 * 3`  | `12`     |
+| `/`      | Division (mit Nachkommastellen) | `5 / 2`  | `2.5`    |
+| `//`     | Ganzzahl-Division               | `5 // 2` | `2`      |
+| `%`      | Modulo (Restwert)               | `5 % 2`  | `1`      |
+| `**`     | Potenzierung                    | `2 ** 3` | `8`      |
 
-**Logik:** and  or  not
+**Merke:**
+
+* `/` gibt immer ein **float** zurück.
+* `//` teilt und rundet **nach unten** auf eine ganze Zahl.
+* `%` ist nützlich, um gerade/ungerade Werte zu prüfen (`x % 2 == 0`).
+* `**` wird in mathematischen Berechnungen häufig für Quadrate oder Exponenten verwendet.
+
+---
+
+### 2. Vergleichsoperatoren
+
+Diese liefern **boolesche Werte** (`True` oder `False`).
+
+| Operator | Bedeutung           | Beispiel | Ergebnis |
+| -------- | ------------------- | -------- | -------- |
+| `==`     | Gleich              | `3 == 3` | `True`   |
+| `!=`     | Ungleich            | `4 != 5` | `True`   |
+| `<`      | Kleiner als         | `2 < 5`  | `True`   |
+| `>`      | Größer als          | `7 > 9`  | `False`  |
+| `<=`     | Kleiner oder gleich | `5 <= 5` | `True`   |
+| `>=`     | Größer oder gleich  | `6 >= 3` | `True`   |
 
 **Beispiel:**
 
 ```python
 alter = 20
-print(alter > 18 and alter < 30)  # True
+print(alter >= 18)  # True
 ```
 
-**Funktion round():** rundet numerische Ergebnisse auf definierte Nachkommastellen.
+**Merke:**
+Vergleiche werden in der Regel für Entscheidungsstrukturen (`if`) oder Logikabfragen verwendet.
+
+---
+
+### 3. Logische Operatoren
+
+Kombinieren mehrere Bedingungen.
+
+| Operator | Bedeutung                      | Beispiel                      | Ergebnis |
+| -------- | ------------------------------ | ----------------------------- | -------- |
+| `and`    | beide müssen wahr sein         | `(alter > 18 and alter < 30)` | True     |
+| `or`     | mindestens eine Bedingung wahr | `(alter < 18 or alter > 65)`  | False    |
+| `not`    | kehrt Wahrheitswert um         | `not True`                    | False    |
+
+**Beispiel:**
+
+```python
+temperatur = 22
+regnet = False
+
+if temperatur > 20 and not regnet:
+    print("Perfektes Wetter!")
+```
+
+---
+
+### 4. Funktion round()
+
+Rundet numerische Ergebnisse.
+
+```python
+ergebnis = 10 / 3
+print(round(ergebnis, 2))  # 3.33
+```
+
+**Syntax:** `round(wert, stellen)`
+
+* `stellen` = Anzahl der Nachkommastellen
+* Wenn kein zweiter Parameter angegeben wird, rundet Python auf die nächste ganze Zahl.
+
+---
+
+### 5. Kurzüberblick
+
+* Operatoren verknüpfen Werte oder Variablen.
+* Ausdrücke erzeugen neue Werte.
+* Das Ergebnis eines Ausdrucks kann sofort weiterverwendet oder gespeichert werden.
+
+**Beispiel:**
+
+```python
+a = 5
+b = 2
+summe = a + b
+print(summe > 5 and summe < 10)
+```
+
+→ Ausgabe: `True`
 
 ---
 
 ## Modul 1.3 – Benutzerinteraktion mit input()
 
-**Ziel:** Programme reagieren auf Nutzereingaben.
+**Ziel:**
+Programme sollen auf Eingaben des Benutzers reagieren und diese weiterverarbeiten.
 
-**Grundlage:**
+---
+
+### 1. Funktionsweise
+
+`input()` pausiert das Programm und wartet, bis der Benutzer etwas eingibt und mit Enter bestätigt.
+Der eingegebene Text wird **immer als Zeichenkette (str)** zurückgegeben.
+
+**Beispiel:**
 
 ```python
 name = input("Wie heißt du? ")
 print(f"Hallo {name}, willkommen im Kurs!")
 ```
 
-**Datentypen beachten:**
+**Ablauf:**
 
-* Alle Eingaben von input() sind vom Typ str
-* Wenn du rechnen willst, musst du umwandeln
+1. Das Programm zeigt die Frage an.
+2. Der Benutzer gibt Text ein (z. B. „Lisa“).
+3. Die Eingabe wird als String gespeichert.
+
+---
+
+### 2. Typumwandlung
+
+Da `input()` immer Text liefert, musst du bei Zahlen **explizit umwandeln**, wenn du mit ihnen rechnen möchtest.
 
 ```python
 alter = int(input("Wie alt bist du? "))
 print(f"In 10 Jahren bist du {alter + 10} Jahre alt.")
 ```
 
-**Beispiel:**
+**Typische Umwandlungen:**
+
+* `int()` für ganze Zahlen (z. B. Alter, Stückzahl)
+* `float()` für Kommazahlen (z. B. Temperatur, Preis)
+* `str()` nur selten nötig, weil `input()` ohnehin String liefert
+
+---
+
+### 3. Beispielprogramm
 
 ```python
 Name = input("Wie heißt du? ")
-Alter = input(str("Wie alt bist du? "))
+Alter = input("Wie alt bist du? ")
 Wohnort = input("Wo wohnst du? ")
 
 print(f"Mein Name ist {Name}, ich bin {Alter} Jahre alt und wohne in {Wohnort}.")
 ```
 
-**Hinweis:**
+> **Hinweis:**
+> Dieses Beispiel nutzt nur Textverarbeitung – keine Berechnungen.
+> Darum bleibt alles vom Typ `str`.
 
-* Eingaben mit input() sind immer vom Typ str
-* Typwandlung (int, float) ist nur nötig, wenn mit Werten gerechnet wird
-* Für reine Ausgaben oder Textverarbeitung reicht str
+---
+
+### 4. Merksätze
+
+* `input()` → wartet auf Eingabe, Rückgabe immer `str`
+* Typwandlung nur, wenn du mit Zahlen arbeitest
+* `print()` → Ausgabe, `input()` → Eingabe
+* Fehlende Umwandlung führt bei Rechenoperationen zu Fehlern oder falscher Verkettung
 
 ---
 
 ## Modul 1.4 – Bedingungen (if, elif, else)
 
-**Ziel:** Programmabläufe steuern und Entscheidungen treffen.
+**Ziel:**
+Programmabläufe steuern und Entscheidungen treffen.
+Bedingungen sind das Herzstück der Logik in Python – sie bestimmen, **welcher Code ausgeführt wird** und welcher nicht.
 
-**Grundprinzip:**
+---
+
+### 1. Grundprinzip
 
 ```python
 alter = 20
@@ -207,13 +322,27 @@ else:
     print("Du bist im Ruhestand.")
 ```
 
-**Wichtige Punkte:**
+**Ablauf:**
 
-* Einrückung (vier Leerzeichen oder ein Tab) ist Pflicht
-* Nur der eingerückte Block gehört zur Bedingung
-* Bedingungen werden nacheinander geprüft; nur die erste zutreffende wird ausgeführt
+1. Die erste `if`-Bedingung wird geprüft.
+2. Wenn sie **True** ist, wird der Block ausgeführt und alle weiteren übersprungen.
+3. Wenn sie **False** ist, prüft Python die nächste (`elif`).
+4. Wenn keine Bedingung zutrifft, läuft der `else`-Block.
 
-**Logische Kombination:**
+---
+
+### 2. Syntaxregeln
+
+* Einrückung (vier Leerzeichen oder ein Tab) ist Pflicht.
+* Nur der eingerückte Code gehört zur Bedingung.
+* Die Blöcke müssen **in der richtigen Reihenfolge** stehen (`if` → `elif` → `else`).
+* Ein `else` ist optional, aber empfehlenswert, um alle Fälle abzudecken.
+
+---
+
+### 3. Logische Kombinationen
+
+Mehrere Bedingungen können miteinander verknüpft werden.
 
 ```python
 temperatur = 22
@@ -225,7 +354,34 @@ else:
     print("Bleib lieber drin.")
 ```
 
-**Kurzform (Ternäre Bedingung):**
+**Erklärung:**
+
+* `and` → beide Bedingungen müssen wahr sein
+* `or` → mindestens eine muss wahr sein
+* `not` → kehrt den Wahrheitswert um
+
+---
+
+### 4. Bereichsprüfungen
+
+Mit Vergleichsoperatoren kannst du auch Bereiche abfragen.
+
+```python
+temp = float(input("Temperatur: "))
+
+if temp < 18:
+    print("Heizung an")
+elif temp >= 18 and temp <= 24:
+    print("Alles in Ordnung")
+else:
+    print("Fenster auf")
+```
+
+---
+
+### 5. Kurzform (Ternäre Bedingung)
+
+Eine kompakte Schreibweise für einfache Entscheidungen.
 
 ```python
 alter = 17
@@ -233,46 +389,65 @@ status = "volljährig" if alter >= 18 else "minderjährig"
 print(status)
 ```
 
-**Beispiel aus Aufgabe:**
+**Struktur:**
+`variable = wert_wenn_true if bedingung else wert_wenn_false`
 
-```python
-alter = int(input("Wie alt bist du? "))
+Diese Form eignet sich gut für einfache Zuweisungen, aber nicht für lange Logik.
 
-if alter < 18:
-    print("Du bist minderjährig")
-elif alter < 65:
-    print("Du bist volljährig")
-else:
-    print("Du bist hoffentlich im Ruhestand")
-```
+---
 
-**Hinweis:**
+### 6. Bedeutung der Schlüsselwörter
 
-* Bedingungen steuern den Programmablauf
-* Einrückung ist syntaktisch zwingend
-* Nur der erste zutreffende Block wird ausgeführt
-* Logische Operatoren (and, or, not) können kombiniert werden
+| Schlüsselwort | Bedeutung  | Beschreibung                                               |
+| ------------- | ---------- | ---------------------------------------------------------- |
+| `if`          | wenn       | prüft eine Bedingung einmal                                |
+| `elif`        | sonst wenn | prüft eine weitere Bedingung, falls die erste nicht zutraf |
+| `else`        | ansonsten  | wird ausgeführt, wenn keine Bedingung wahr ist             |
+
+`if` steht also für **Entscheidung**, nicht für Wiederholung.
+Schleifen wie `while` oder `for` folgen in Modul 1.5.
+
+---
+
+### 7. Merksätze
+
+* Bedingungen steuern den Ablauf deines Programms.
+* Nur der **erste zutreffende Block** wird ausgeführt.
+* Einrückung ist syntaktisch zwingend.
+* Logische Operatoren (`and`, `or`, `not`) können kombiniert werden.
+* `elif` ist die Kurzform von *else if*.
 
 ---
 
 ## Modul 1.5 – Schleifen (for, while)
 
-**Ziel:** Wiederkehrende Abläufe automatisieren.
+**Ziel:**
+Wiederkehrende Abläufe automatisieren und kontrolliert wiederholen.
 
-**for-Schleife (vorwärts zählen):**
+---
+
+### 1. for-Schleife (vorwärts zählen)
+
+> Wird verwendet, wenn die Anzahl der Durchläufe bekannt ist.
 
 ```python
 for x in range(1, 11):
     print(x)
 ```
 
-* `range(1, 11)` erzeugt die Werte 1 bis 10
-* `x` nimmt nacheinander jeden Wert an
-* Der eingerückte Code läuft bei jedem Durchlauf einmal
+* `range(1, 11)` erzeugt die Werte 1 bis 10.
+* `x` nimmt nacheinander jeden Wert an.
+* Der eingerückte Code läuft bei jedem Durchlauf einmal.
 
-**while-Schleife (rückwärts zählen):**
+---
+
+### 2. while-Schleife (rückwärts zählen)
+
+> Wird verwendet, wenn die Wiederholungen dynamisch sind oder von einer Bedingung abhängen.
 
 ```python
+x = 10
+
 while x > 0:
     print(x)
     x -= 1
@@ -280,59 +455,110 @@ while x > 0:
 print("Fertig.")
 ```
 
-* Die Schleife läuft, solange die Bedingung `x > 0` wahr ist
-* `x -= 1` reduziert den Zähler bei jedem Durchlauf
-* Wenn `x` 0 erreicht, endet die Schleife
-
-**Gesamtes Beispiel:**
-
-```python
-x = 0
-
-for x in range(1, 11):
-    print(x)
-
-while x > 0:
-    print(x)
-    x -= 1
-
-print("Zählung abgeschlossen.")
-```
-
-**Hinweis:**
-
-* Python führt Schleifen **sequentiell** aus – zuerst `for`, danach `while`
-* Eine `while`-Bedingung wird erst geprüft, wenn die vorherige Schleife beendet ist
-* Beide Schleifen laufen niemals gleichzeitig
-* `for` wird verwendet, wenn die Anzahl der Durchläufe bekannt ist
-* `while` eignet sich für unklare oder dynamische Wiederholungen
+* Die Schleife läuft, solange die Bedingung `x > 0` wahr ist.
+* `x -= 1` reduziert den Zähler bei jedem Durchlauf.
+* Wenn `x` 0 erreicht, endet die Schleife.
 
 ---
 
-## Zwischenquest – Konsolenprojekt „Little-Helper“
+### 3. break und continue
 
-Ziel dieser Quest ist die praktische Anwendung der Module 1.0 bis 1.5 in einem durchgängigen, lauffähigen Programm. Der Little-Helper wird Schritt für Schritt aufgebaut und verbindet alle bisher gelernten Konzepte.
+**break:** Beendet eine Schleife sofort, auch wenn die Bedingung noch wahr ist.
 
-**Zielsetzung:**
+```python
+for i in range(10):
+    if i == 5:
+        break
+    print(i)
+```
 
-* Eingaben entgegennehmen und auswerten
-* Entscheidungen basierend auf Eingaben treffen
-* Wiederholungen mit Schleifen umsetzen
-* Den Programmablauf verständlich strukturieren
+**continue:** Überspringt den aktuellen Durchlauf und springt zum nächsten.
 
-**Aufgabenstellung:**
+```python
+for i in range(6):
+    if i == 3:
+        continue
+    print(i)
+```
 
-1. Begrüßung ausgeben und den Nutzer einführen.
-2. Name und Alter abfragen.
-3. Eine individuelle Rückmeldung je nach Alter ausgeben (Bedingungen).
-4. Eine Schleife implementieren, um den Ablauf mehrfach zu wiederholen.
-5. Am Ende das Programm ordentlich beenden.
+---
 
-**Regeln:**
+### 4. Vergleich for vs while
 
-* Nur Techniken aus den Modulen 1.0 bis 1.5 verwenden.
-* Keine Funktionen, Listen oder Dateien nutzen.
-* Saubere Einrückung und nachvollziehbare Struktur sind Pflicht. Kommentare zur Orientierung erwünscht.
+| Schleifenart | Verwendung                             | Bedingung                      | Beispiel            |
+| ------------ | -------------------------------------- | ------------------------------ | ------------------- |
+| `for`        | feste Anzahl an Wiederholungen         | vordefiniert (z. B. `range()`) | `for i in range(5)` |
+| `while`      | unklare oder dynamische Wiederholungen | prüft fortlaufend              | `while x < 10`      |
 
-**Ziel der Quest:**
-Am Ende entsteht ein vollständiges, interaktives Konsolenprogramm, das den gesamten Lernfortschritt bis hierher abbildet und eigenständig lauffähig ist.
+---
+
+### 5. Merksätze
+
+* `for` → feste Wiederholungen
+* `while` → prüft fortlaufend bis Bedingung False wird
+* `break` → Schleife sofort beenden
+* `continue` → nächsten Durchlauf starten
+* Schleifen können ineinander geschachtelt werden
+* Einrückung ist auch hier zwingend
+
+---
+
+## Zwichenquests um Wissen zu festigen
+
+### Projekt: Bot
+
+**Ziel:**
+Schrittweiser Aufbau eines eigenen Konsolen-Bots.
+Der Bot wächst mit jedem Modul und verbindet alle Grundlagen zu einem funktionierenden Programm.
+Jede Aufgabe nutzt ausschließlich das Wissen des jeweiligen Moduls.
+
+---
+
+### Modul 1.0 – Begrüßung
+
+Der Bot soll den Benutzer begrüßen.
+Er gibt erste Ausgaben auf der Konsole aus.
+
+---
+
+### Modul 1.1 – Identität
+
+Der Bot stellt sich vor.
+Er besitzt eigene Daten wie Name, Version und Herkunft.
+
+---
+
+### Modul 1.2 – Rechenfähigkeit
+
+Der Bot kann einfache Berechnungen ausführen.
+Er verwendet Operatoren und zeigt das Ergebnis an.
+
+---
+
+### Modul 1.3 – Kommunikation
+
+Der Bot fragt den Benutzer nach Informationen.
+Eingaben werden gelesen und in Antworten integriert.
+
+---
+
+### Modul 1.4 – Entscheidungen
+
+Der Bot bewertet Eingaben logisch.
+Er reagiert situationsabhängig und gibt passende Rückmeldungen.
+
+---
+
+### Modul 1.5 – Kontrolle
+
+Der Bot kann Gespräche wiederholen oder beenden.
+Er entscheidet selbst, wann das Programm endet.
+
+---
+
+### Endziel
+
+Am Ende des Grundkurses entsteht ein vollständiger, eigenständiger Konsolen-Bot mit
+Eingabe, Verarbeitung, Entscheidung und Wiederholung.
+
+---
