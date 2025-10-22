@@ -216,7 +216,5 @@ Auch wenn ich auf Richtigkeit achte, können Fehler enthalten sein.
 
 * Mounten verbindet ein Dateisystem mit einem Verzeichnisbaum.
 * Befehl: `mount`
-
----
-
-✅ **Stand: LPIC-1 – 101 Strukturiert nach Lernmodulen**
+* hardware wird automatisch von udev eingehängt.
+* `mount` listet alle mounts eines systems
