@@ -503,7 +503,7 @@ for i in range(6):
 
 ---
 
-## Zwichenquests um Wissen zu festigen
+## Zwischenquests um Wissen zu festigen
 
 ### Projekt: Bot
 
@@ -562,3 +562,46 @@ Am Ende des Grundkurses entsteht ein vollständiger, eigenständiger Konsolen-Bo
 Eingabe, Verarbeitung, Entscheidung und Wiederholung.
 
 ---
+
+### Ergebnis der Quest
+
+```python
+version = "v0.3"
+print()
+print("Hallo ich bin dein persönlicher Bot.")
+print(f"Ich bin ein Prototyp in Version: {version} ")
+name= input("Wie heißt du? ")
+print()
+print(f"Hallo {name} wie kann ich dir helfen?")
+print()
+print("Ich kann zum Beispiel Berechnungen durchführen.")
+print("Möchtest du es versuchen?")
+versuch = input("Ja oder Nein?").lower()
+while versuch == "ja":
+    print("Super, gib mir 2 Zahlen und einen Operator, sowas wie +,-,* oder /: ")
+    x = float(input("Die erste Zahl lautet?: "))
+    Operator = input("Was möchtest du rechnen? Zulässig ist +, -, * und /: ")
+    y = float(input("Die zweite Zahl lautet?: "))
+    if Operator == "+":
+        Ergebnis = x+y
+        print(f"Dein Ergebnis der Addition ist: {Ergebnis}")
+    elif Operator == "-":
+        Ergebnis = x-y
+        print(f"Dein Ergebnis der Subtraktion ist: {Ergebnis} ")
+    elif Operator == "*":
+        Ergebnis = x*y
+        print(f"Dein Ergebnis der Multiplikation ist: {Ergebnis} ")
+    elif Operator == "/":
+        Ergebnis = x/y
+        print(f"Dein Ergebnis der Division ist: {Ergebnis} ")
+    else:
+        print("Das ist kein gültiger Operator")
+    versuch = input("Möchtest du noch mal rechnen? ").lower()
+else:
+    print("Was wollen wir stattdessen machen?")
+    print("Zur Auswahl steht aktuell......leider nichts. Tschüß.")
+```
+
+## Modul 1.6
+
+## Endquest um Wissen weiter zu festigen
