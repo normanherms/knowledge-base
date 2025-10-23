@@ -602,6 +602,204 @@ else:
     print("Zur Auswahl steht aktuell......leider nichts. Tschüß.")
 ```
 
-## Modul 1.6
+---
+
+## Modul 1.6 – Funktionen & Modularisierung
+
+**Ziel:**
+Strukturierung von Programmen durch wiederverwendbare Codebausteine.
+Funktionen ermöglichen es, Aufgaben zu kapseln, mehrfach zu verwenden und Programme übersichtlicher zu gestalten.
+
+---
+
+### 1. Grundprinzipien
+
+Eine Funktion ist ein benannter Codeblock, der nur ausgeführt wird, wenn er aufgerufen wird.
+
+```python
+def funktionsname(parameter):
+    # auszuführender Code
+    return ergebnis
+```
+
+* **def**: leitet die Funktionsdefinition ein
+* **parameter**: Eingabewerte, die in der Funktion genutzt werden können
+* **return**: gibt ein Ergebnis zurück (optional)
+
+**Beispiel:**
+
+```python
+def addiere(a, b):
+    return a + b
+
+summe = addiere(3, 4)
+print(summe)
+```
+
+Ergebnis: `7`
+
+---
+
+### 2. Parameter und Argumente
+
+Parameter sind Platzhalter für Werte, die beim Aufruf übergeben werden.
+Die übergebenen Werte heißen Argumente.
+
+```python
+def begruessung(name):
+    print(f"Hallo {name}")
+
+begruessung("Norman")
+```
+
+---
+
+### 3. Lokale und globale Variablen
+
+* **Lokal:** innerhalb der Funktion definiert, nur dort gültig
+* **Global:** außerhalb definiert, überall im Programm sichtbar
+
+**Beispiel:**
+
+```python
+x = 10  # global
+
+def verdopple(y):  # lokal
+    return y * 2
+
+print(verdopple(x))
+```
+
+---
+
+### 4. Funktionen in mehreren Dateien nutzen
+
+Funktionen können in eigene Dateien ausgelagert werden.
+So entsteht eine modulare Struktur mit klar getrennten Aufgabenbereichen.
+
+**Datei:** `funktionen.py`
+
+```python
+def addiere(a, b):
+    return a + b
+```
+
+**Datei:** `main.py`
+
+```python
+import funktionen
+
+ergebnis = funktionen.addiere(5, 7)
+print(ergebnis)
+```
+
+Mit `import` können eigene Module oder externe Bibliotheken eingebunden werden.
+
+---
+
+### 5. Vorteile der Modularisierung
+
+| Vorteil                  | Beschreibung                                                    |
+| ------------------------ | --------------------------------------------------------------- |
+| **Wiederverwendbarkeit** | Einmal definierte Funktionen können beliebig oft genutzt werden |
+| **Struktur & Übersicht** | Programme bleiben lesbar und klar gegliedert                    |
+| **Fehlerreduktion**      | Änderungen betreffen nur einzelne Module                        |
+| **Testbarkeit**          | Funktionen können isoliert getestet werden                      |
+
+---
+
+### 6. Best Practices
+
+* Eine Funktion sollte **genau eine Aufgabe** erfüllen.
+* Namen sollten beschreiben, **was** die Funktion tut (z. B. `berechne_summe`, nicht `doStuff`).
+* Funktionen möglichst **kurz und eigenständig** halten.
+* Keine unkontrollierte Nutzung globaler Variablen.
+* Rückgabewerte (`return`) nutzen, statt direkt in der Funktion zu drucken.
+
+---
+
+### 7. Zusammenfassung
+
+Funktionen sind das Herz modularer Programme.
+Sie teilen komplexe Aufgaben in kleine, verständliche Blöcke auf und ermöglichen:
+
+* strukturierte Programmierung
+* Wiederverwendung von Code
+* bessere Wartbarkeit und Testbarkeit
+* Grundlage für größere Projekte mit mehreren Modulen
+
+---
+
+##
 
 ## Endquest um Wissen weiter zu festigen
+
+### Phase 2 – Von Skript zu Tool
+
+| Modul   | Thema                        | Ziel                                          |
+| ------- | ---------------------------- | --------------------------------------------- |
+| **1.6** | Funktionen & Modularisierung | Logik in wiederverwendbare Bausteine zerlegen |
+| **1.7** | Dateien lesen/schreiben      | Daten extern speichern und abrufen            |
+| **1.8** | Mini-Projekt: Konsolen-Tool  | Eigenständiges, nützliches CLI-Programm bauen |
+
+---
+
+### Modul 1.6 Funktionen & Modularisierung
+
+**Ziel:**
+Den bestehenden Bot in klar getrennte Funktionsblöcke zerlegen.
+Jeder Abschnitt des Codes bekommt eine eigene Aufgabe, z. B.:
+
+* `begrüßung()`
+* `rechnen()`
+* `wiederholen()`
+* `verabschiedung()`
+
+**Lerninhalte:**
+
+* Parameter und Rückgabewerte verstehen
+* Lokale vs. globale Variablen unterscheiden
+* Code wiederverwenden und testen können
+* Einstieg in strukturierte Programmierung
+
+---
+
+### Modul 1.7 – Dateien lesen und schreiben
+
+**Ziel:**
+Der Bot kann Informationen speichern und wieder abrufen.
+Beispielsweise:
+
+* Protokoll der letzten Berechnungen
+* Namen der Benutzer
+* Einfache Konfigurationen (z. B. Standardname oder Version)
+
+**Lerninhalte:**
+
+* Dateioperationen mit `open()`, `read()`, `write()`
+* Dateimodi (`'r'`, `'w'`, `'a'`) und ihre Unterschiede
+* Fehlerbehandlung mit `try/except`
+* Arbeit mit Textdateien (`.txt`, `.log`)
+
+---
+
+### Modul 1.8 – Mini-Projekt: Konsolen-Tool
+
+**Ziel:**
+Ein vollständiges, eigenständiges Programm mit klarer Struktur erstellen.
+
+**Beispielideen:**
+
+* Ein Rechner mit Protokollfunktion
+* Ein Aufgaben-Tracker
+* Ein kleiner CLI-Assistent für Alltag oder System
+
+**Lerninhalte:**
+
+* Aufteilung in mehrere `.py`-Dateien (Module)
+* Einstiegspunkt mit `if __name__ == "__main__":`
+* Fehler- und Eingabeprüfung
+* Nutzbarkeit über Terminal
+* Optionale Erweiterung: einfache Menüführung
+
+---
