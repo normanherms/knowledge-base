@@ -21,7 +21,9 @@ Eine Lizenz füge ich später hinzu.
 
 Teile der Dokumentation wurden mithilfe von KI korrigiert oder aus handschriftlichen Notizen in Markdown überführt.
 Eingesetzt wurde KI ausschließlich zur **Fehlerkorrektur, Glättung und technischen Richtigstellung von Befehlen**.
-Die Inhalte selbst stammen aus meinen eigenen Mitschriften und Kursaufzeichnungen.
+Die Inhalte selbst stammen aus meinen eigenen Mitschriften und Kursaufzeichnungen. 
+
+Ausnahme hiervon bildet das Selbststudium sowie das DevOp-Selbststudium. Diese Pläne wurden mit Hilfe von ChatGPT erstellt.
 
 ---
 
