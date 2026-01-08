@@ -44,6 +44,7 @@ Die Inhalte selbst stammen aus meinen eigenen Mitschriften und Kursaufzeichnunge
 ## Geplante Erweiterungen
 
 - Cheatbooks vervollständigen (Bash, Bash-Scripting)
+- Dokumentation zum aktuellen Homelab hinzufügen
 
 ---
 
