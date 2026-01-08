@@ -1,0 +1,21 @@
+# Editor-Backups
+*~
+*.swp
+*.swo
+
+# OS-Dateien
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+*.code-workspace
+*.vsix
+
+# Persönliche Scratchpads (nicht committen)
+scratch/
+notes/
+TODO.md
+*.bak
+*.tmp
+infrastructure/worknotes/
