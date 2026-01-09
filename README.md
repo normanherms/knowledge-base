@@ -41,7 +41,7 @@ Dokumentation meines Homelab-Clusters – ein Lernprojekt mit mehreren Iteration
 |-----------------------------------------------------------|-------------------------------------------------|
 | [iterations-history.md](./infrastructure/iterations-history.md) | Lernweg, gescheiterte Versuche, Erkenntnisse   |
 | [architecture.md](./infrastructure/architecture.md)       | Aktuelles Setup & Rollen                        |
-| [network.md](./infrastructure/network.md)                 | IP-Planung & WireGuard Mesh                     |
+| [network-plan.md](./infrastructure/network-plan.md)                 | IP-Planung & WireGuard Mesh                     |
 | [deployment-plan.md](./infrastructure/deployment-plan.md) | 3-Phasen-Aufbauplan                             |
 | [README.md](./infrastructure/README.md)                   | Kurze Einleitung                                |
 
