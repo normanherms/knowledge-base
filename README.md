@@ -17,14 +17,6 @@ Dieses Repository ist public und kann von jedem genutzt werden, dem es hilft.
 
 ---
 
-## Hinweis zur Erstellung
-
-Teile der Dokumentation wurden mithilfe von KI korrigiert oder aus handschriftlichen Notizen in Markdown überführt.
-Eingesetzt wurde KI ausschließlich zur Fehlerkorrektur, Glättung und technischen Richtigstellung von Befehlen.
-Die Inhalte selbst stammen aus meinen eigenen Mitschriften und Kursaufzeichnungen.
-
----
-
 ## Cheatbooks (Nachschlagewerke)
 
 | Thema                  | Datei                                                  | Status       |
@@ -41,13 +33,36 @@ Die Inhalte selbst stammen aus meinen eigenen Mitschriften und Kursaufzeichnunge
 
 ---
 
-## Geplante Erweiterungen
+## Infrastructure (Homelab-Cluster)
 
-- Cheatbooks vervollständigen (Bash, Bash-Scripting)
-- Dokumentation zum aktuellen Homelab hinzufügen
+Dokumentation meines Homelab-Clusters – ein Lernprojekt mit mehreren Iterationen, gescheiterten Versuchen und Neuanfängen.
+
+| Dokument                                                  | Inhalt                                          |
+|-----------------------------------------------------------|-------------------------------------------------|
+| [iterations-history.md](./infrastructure/iterations-history.md) | Lernweg, gescheiterte Versuche, Erkenntnisse   |
+| [architecture.md](./infrastructure/architecture.md)       | Aktuelles Setup & Rollen                        |
+| [network.md](./infrastructure/network.md)                 | IP-Planung & WireGuard Mesh                     |
+| [deployment-plan.md](./infrastructure/deployment-plan.md) | 3-Phasen-Aufbauplan                             |
+| [README.md](./infrastructure/README.md)                   | Kurze Einleitung                                |
+
+> **Hinweis:** Diese Dokumentation zeigt auch gescheiterte Ansätze – nicht nur Erfolge.
 
 ---
 
-Letzte Aktualisierung: 2026-01-08
+## Hinweis zur Erstellung
+
+Teile der Dokumentation wurden mithilfe von KI korrigiert oder aus handschriftlichen Notizen in Markdown überführt.
+Eingesetzt wurde KI ausschließlich zur Fehlerkorrektur, Glättung und technischen Richtigstellung von Befehlen.
+Die Inhalte selbst stammen aus meinen eigenen Mitschriften und Kursaufzeichnungen.
+
+---
+
+## Geplante Erweiterungen
+
+- Cheatbooks vervollständigen (Bash, Bash-Scripting)
+
+---
+
+Letzte Aktualisierung: 2026-01-09
 Maintainer: Norman Herms
 Kontakt: [LinkedIn](https://linkedin.com/in/norman-herms)
