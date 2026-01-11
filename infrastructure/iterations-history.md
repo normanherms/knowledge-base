@@ -338,15 +338,15 @@ dock-mirror (Heimserver)
 
 **Netzwerk:**
 
-- Heimnetz: 192.168.xxx.0/24
-- WireGuard Mesh: 10.xx.xx.0/24
+- Heimnetz: 192.168.1.0/24
+- WireGuard Mesh: 10.99.99.0/24
 - Klare IP-Planung mit Primary + Reserve IPs
 
 **3-Phasen-Plan:**
 
 - **Phase 1:** Baseline Cluster (WG-Mesh, K3s, OpenCloud, Monitoring)
 - **Phase 2:** Storage-Replikation (DRBD, manuelles Failover)
-- **Phase 3:** Optional HA (Pacemaker, Corosync, Auto-Failover)
+- **Phase 3:** Optional HA (Möglichkeiten werden geprüft)
 
 **Architektur-Prinzipien:**
 
@@ -364,6 +364,7 @@ dock-mirror (Heimserver)
 **Status Januar 2026:**
 
 - dock-dash grundlegend bereit
+- Fencing sowie Quorum aktuell nicht umsetzbar da kein Fence Machanismus vorhanden
 - Alles andere: noch nicht deployed
 
 ---
@@ -441,4 +442,4 @@ Diese Dokumentation existiert weil:
 
 ---
 
-Zuletzt aktualisiert: 9. Januar 2026
+Zuletzt aktualisiert: 11. Januar 2026

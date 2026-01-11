@@ -20,6 +20,11 @@ Im Vordergrund stehen Stabilität, Nachvollziehbarkeit und die Fähigkeit, Anwen
 - Grenzwerte wurden nicht frühzeitig eingehalten
 - Architektur war nicht reproduzierbar
 
+## Probleme bei aktueller Iteration
+
+- dock-mirror ist aktuell nicht fencebar da kein IPMI Modul
+- es werden aktuell Möglichkeiten geprüft
+
 ---
 
 ## Finale Architektur

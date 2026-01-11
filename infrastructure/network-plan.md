@@ -32,17 +32,17 @@ Reserve: 192.168.1.15
 
 ### dock-prod (Root G12, K3s Worker, DRBD Primary)
 
-A: 10.99.99.1
-B: 10.99.99.101
+A: 10.99.99.1 (Primary WG)
+B: 10.99.99.101 (DRBD Replication)
 
 ### dock-load (Root G12, K3s Control Plane / Quorum)
 
-A: 10.99.99.2
-B: 10.99.99.102
+A: 10.99.99.2 (Primary WG)
+B: 10.99.99.102 (Reserve, kein DRBD - nur Quorum!)
 
 ### dock-dash (VPS nano, Monitoring)
 
-A: 10.99.99.4
+A: 10.99.99.4 (Primary WG)
 B: 10.99.99.104
 
 ---
@@ -51,12 +51,12 @@ B: 10.99.99.104
 
 ### dock-mirror
 
-A: 10.99.99.3
-B: 10.99.99.103
+A: 10.99.99.3 (Primary WG)
+B: 10.99.99.103 (DRBD Replication)
 
 ### synology214
 
-A: 10.99.99.5
+A: 10.99.99.5 (Primary WG)
 B: 10.99.99.105
 
 ---
@@ -69,14 +69,12 @@ B: 10.99.99.105
 
 - K3s Worker
 - DRBD Primary
-- SDB Fencing
 
 #### dock-load
 
 - K3s Control Plane
 - Quorum Node
 - Loadbalancing für OpenCloud
-- SDB Fencing
 
 #### dock-dash
 
@@ -88,7 +86,6 @@ B: 10.99.99.105
 
 - K3s Worker
 - DRBD Secondary
-- SDB Fencing
 
 #### dock-edge
 
@@ -104,15 +101,16 @@ B: 10.99.99.105
 
 ## Empfehlung /etc/hosts
 
-```bash
+# Heimnetz
+
 192.168.1.10 dock-mirror
 192.168.1.12 dock-edge
 192.168.1.14 synology214
+
+# WireGuard
 
 10.99.99.1 dock-prod
 10.99.99.2 dock-load
 10.99.99.3 dock-mirror
 10.99.99.4 dock-dash
 10.99.99.5 synology214
-
-```

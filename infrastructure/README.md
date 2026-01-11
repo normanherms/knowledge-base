@@ -7,8 +7,8 @@ Dokumentation meines Homelab-Clusters. Enthält aktuelle Architektur, Netzwerkpl
 | Datei                     | Inhalt                                          |
 |---------------------------|-------------------------------------------------|
 | `architecture.md`         | Aktueller Stand: Hardware, Rollen, 3-Phasen-Plan |
-| `network.md`              | IP-Planung, WireGuard Mesh                     |
-| `design.md`               | Aufbauphasen und offene Baustellen             |
+| `network-plan.md`              | IP-Planung, WireGuard Mesh                     |
+| `deployment-plan.md`               | Aufbauphasen und offene Baustellen             |
 | `iterations-history.md`   | Lernweg mit gescheiterten Versuchen            |
 
 Die Iterationshistorie dokumentiert auch verworfene Ansätze, um Designentscheidungen nachvollziehbar zu machen.

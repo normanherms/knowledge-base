@@ -18,7 +18,7 @@ Fokus liegt auf Netzwerk, K3s, Storage-Layout und klarer Rollentrennung.
 • K3s Worker auf dock-prod und dock-mirror
 • OpenCloud auf dock-prod deployen
 • Keine DRBD-Produktivnutzung
-• Kein Pacemaker
+• Kein Pacemaker/Corosync
 • Kein automatisches Failover
 
 ### Erwartetes Ergebnis
@@ -33,13 +33,13 @@ System ist testbar, reproduzierbar und nachvollziehbar.
 ### Ziel
 
 Replizierter Storage zwischen Home und RZ ohne Komplexität durch HA-Stack.
-Priorität: Datenhoheit über deine Daten, nicht Zero-Downtime.
+Priorität: Datenhoheit über Daten, nicht Zero-Downtime. Mirror muss Secondary bleiben
 
 ### Schritte
 
 • DRBD zwischen dock-prod (Primary) und dock-mirror (Secondary) konfigurieren
 • Asynchrone Replikation
-• Quorum/Arbitrator auf dock-load
+• Quorum-Deamon auf dock-load
 • K3s-PVCs bleiben auf dock-prod
 • Mirror erhält Replikation ohne aktiven Zugriff
 • Dokumentiertes manuelles Failover-Prozedere erstellen
@@ -51,18 +51,16 @@ Bei Ausfall von prod sind Daten nicht verloren, aber Failover ist manuell.
 
 ---
 
-## Phase 3 – Hochverfügbarkeit (Optional)
+## Phase 3 – Hochverfügbarkeit (Lösungen werden geprüft)
 
-### Ziel
+### Zielidee
 
 Echte HA-Funktionalität über automatisiertes Failover – aber **nur**, wenn Phase 1 und 2 stabil sind und getestet sowie reproduzierbar
 
-### Schritte
+### Schritte theoretisch
 
 • Pacemaker + Corosync auf prod/mirror/load
-• SDB-Stonith aktivieren
 • DRBD in Primary/Secondary mit Auto-Failover
-• Storage-Device als hochverfügbare Resource veröffentlichen
 • Pods migrieren automatisch je nach Worker-Verfügbarkeit
 • K3s bleibt weiterhin Single Control Plane (bewusster SPOF)
 
@@ -115,7 +113,7 @@ Das ist normal in Hybrid-Cluster, aber wichtig zu wissen.
 
 ### Phase 2 (später)
 
-[ ] DRBD Setup Basis
+[ ] DRBD Setup
 [ ] Replikation testen
 [ ] Manuelles Failover testen
 [ ] Backups in Synology integrieren
@@ -123,8 +121,6 @@ Das ist normal in Hybrid-Cluster, aber wichtig zu wissen.
 
 ### Phase 3 (optional)
 
-[ ] Pacemaker/Corosync
-[ ] SDB/STONITH
-[ ] Auto-Failover testen
-[ ] Endgültige HA-Konfiguration
-[ ] Dokumentation komplett
+- aktuell keine Lösung für Fencing Mechaniken
+- dock-mirror muss per policy Secondary bleiben
+- Lösung für IPMI wird geprüft
