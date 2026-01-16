@@ -7,19 +7,24 @@
 ### Ziel
 
 Ein funktionierender, klar abgegrenzter Grundcluster ohne automatische Failover-Mechaniken.
-Fokus liegt auf Netzwerk, K3s, Storage-Layout und klarer Rollentrennung.
+Fokus liegt auf sichere Einrichtung ein klares Netzwerk, K3s, Storage-Layout und Rollentrennung.
 
 ### Schritte
 
-• Monitoring-Stack auf dock-dash
-• WireGuard-Mesh vollständig auf allen Hosts einrichten
-• /etc/hosts und DNS definieren
-• K3s Control Plane auf dock-load installieren
-• K3s Worker auf dock-prod und dock-mirror
-• OpenCloud auf dock-prod deployen
-• Keine DRBD-Produktivnutzung
-• Kein Pacemaker/Corosync
-• Kein automatisches Failover
+- Baseline auf allen Nodes setzen
+- Baseline kontrollieren ggf. Nacharbeiten falls Punkte nicht umgesetzt wurden
+- WireGuard-Mesh vollständig auf allen Hosts einrichten
+- Monitoring-Stack auf `dash`
+- K3s Control Plane auf `load` installieren
+- K3s Worker auf `prod` und `mirror`
+- OpenCloud auf prod deployen
+
+
+### Out of Scope
+
+- DRBD-Produktivnutzung
+- Pacemaker/Corosync
+- automatisches Failover
 
 ### Erwartetes Ergebnis
 
@@ -33,16 +38,17 @@ System ist testbar, reproduzierbar und nachvollziehbar.
 ### Ziel
 
 Replizierter Storage zwischen Home und RZ ohne Komplexität durch HA-Stack.
-Priorität: Datenhoheit über Daten, nicht Zero-Downtime. Mirror muss Secondary bleiben
+Priorität: Datenhoheit über Daten, nicht Downtime. Mirror muss Secondary bleiben
 
 ### Schritte
 
-• DRBD zwischen dock-prod (Primary) und dock-mirror (Secondary) konfigurieren
-• Asynchrone Replikation
-• Quorum-Deamon auf dock-load
-• K3s-PVCs bleiben auf dock-prod
-• Mirror erhält Replikation ohne aktiven Zugriff
-• Dokumentiertes manuelles Failover-Prozedere erstellen
+- DRBD zwischen prod (Primary) und mirror (Secondary) konfigurieren
+- Asynchrone Replikation
+- Quorum-Deamon auf load
+- K3s-PVCs bleiben auf prod
+- Mirror erhält Replikation ohne aktiven Zugriff
+- Backupsicherung auf Synology NAS
+- Dokumentiertes manuelles Failover-Prozedere erstellen
 
 ### Erwartetes Ergebnis
 
@@ -51,7 +57,7 @@ Bei Ausfall von prod sind Daten nicht verloren, aber Failover ist manuell.
 
 ---
 
-## Phase 3 – Hochverfügbarkeit (Lösungen werden geprüft)
+## Theoretische Phase 3 – Hochverfügbarkeit (umsetzung wird geprüft)
 
 ### Zielidee
 
@@ -74,36 +80,31 @@ Komplexität steigt stark, aber erfüllt echtes HA-Verhalten.
 ## Offene Baustellen / Risiken
 
 1. Control Plane ist bewusst ein SPOF
-Akzeptabel, aber Ausfall von dock-load bedeutet Cluster-Neustart.
+Akzeptabel, aber Ausfall von load bedeutet Cluster-Neustart.
 
 2. DRBD über WAN
 Asynchron notwendig. Wireguard Verschlüsselung sowie Latenz und Bandbreite beeinflussen Catch-Up.
 
-3. CPU-Last durch Ollama
-LLM-Last darf nicht in den Worker-Bereich eingreifen.
-Die Trennung in dock-edge ist richtig gesetzt.
-
-4. Monitoring-Node als VPS nano
+3. Monitoring-Node als VPS nano
 Ressourcen knapp bei Prometheus + Grafana.
-Loki könnte Grenzlast erzeugen.
 
-5. Netzwerkkomplexität
-Der Mix aus Libvirt, Containerd, flannel und lokalen Bridges bleibt ein Fehlerfaktor daher ist die Auslagerung auf dock-edge korrekt.
-
-6. Keine Persistent Volume - übergreifende Storage-Klassen
+4. Keine Persistent Volume - übergreifende Storage-Klassen
 K3s bleibt auf prod als PVC-Heimat beschränkt.
 Das ist normal in Hybrid-Cluster, aber wichtig zu wissen.
 
+5. Failover Logik geht nicht auf da keine Risikofreie Replikation möglich.
+Fencing Mechanik nicht umsetzbar.
+
 ---
 
-## Phasen-Ziele als Checkliste
+## Phasen-Ziele aktueller Stand
 
-### Phase 1 (ab jetzt)
+### Phase 1 (ab Januar)
 
-[x] dock-dash grundlegend bereit
-[ ] dock-prod grundlegend bereit
-[ ] dock-mirror grundlegend bereit
-[ ] dock-load grundlegend bereit
+[x] dash Baseline gesetzt
+[ ] prod Baseline gesetzt
+[ ] mirror Baseline gesetzt
+[ ] load Baseline gesetzt
 [ ] WG-Mesh
 [ ] K3s Control Plane
 [ ] K3s Worker
@@ -114,6 +115,7 @@ Das ist normal in Hybrid-Cluster, aber wichtig zu wissen.
 ### Phase 2 (später)
 
 [ ] DRBD Setup
+[ ] Daten Migration
 [ ] Replikation testen
 [ ] Manuelles Failover testen
 [ ] Backups in Synology integrieren
@@ -122,5 +124,5 @@ Das ist normal in Hybrid-Cluster, aber wichtig zu wissen.
 ### Phase 3 (optional)
 
 - aktuell keine Lösung für Fencing Mechaniken
-- dock-mirror muss per policy Secondary bleiben
+- mirror muss per policy Secondary bleiben
 - Lösung für IPMI wird geprüft

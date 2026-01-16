@@ -39,11 +39,11 @@ Dokumentation meines Homelab-Clusters – ein Lernprojekt mit mehreren Iteration
 
 | Dokument                                                  | Inhalt                                          |
 |-----------------------------------------------------------|-------------------------------------------------|
-| [iterations-history.md](./infrastructure/iterations-history.md) | Lernweg, gescheiterte Versuche, Erkenntnisse   |
-| [architecture.md](./infrastructure/architecture.md)       | Aktuelles Setup & Rollen                        |
-| [network-plan.md](./infrastructure/network-plan.md)                 | IP-Planung & WireGuard Mesh                     |
-| [deployment-plan.md](./infrastructure/deployment-plan.md) | 3-Phasen-Aufbauplan                             |
-| [README.md](./infrastructure/README.md)                   | Kurze Einleitung                                |
+| [iterations-history.md](./infrastructure/cluster/docs/iterations-history.md) | Lernweg, gescheiterte Versuche, Erkenntnisse   |
+| [architecture.md](./infrastructure/cluster/docs/architecture.md)       | Aktuelles Setup & Rollen                        |
+| [network-plan.md](./infrastructure/cluster/docs/network-plan.md)                 | IP-Planung & WireGuard Mesh                     |
+| [deployment-plan.md](./infrastructure/cluster/docs/deployment-plan.md) | 3-Phasen-Aufbauplan                             |
+| [README.md](./infrastructure/cluster/README.md)                   | Kurze Einleitung                                |
 
 > **Hinweis:** Diese Dokumentation zeigt auch gescheiterte Ansätze – nicht nur Erfolge.
 
@@ -51,7 +51,7 @@ Dokumentation meines Homelab-Clusters – ein Lernprojekt mit mehreren Iteration
 
 ## Hinweis zur Erstellung
 
-Teile der Dokumentation wurden mithilfe von KI korrigiert oder aus handschriftlichen Notizen in Markdown überführt.
+Teile der Dokumentation wurde aus Zeitgründen mithilfe von KI korrigiert oder aus handschriftlichen Notizen in Markdown überführt.
 Eingesetzt wurde KI ausschließlich zur Fehlerkorrektur, Glättung und technischen Richtigstellung von Befehlen.
 Die Inhalte selbst stammen aus meinen eigenen Mitschriften und Kursaufzeichnungen.
 
@@ -63,6 +63,6 @@ Die Inhalte selbst stammen aus meinen eigenen Mitschriften und Kursaufzeichnunge
 
 ---
 
-Letzte Aktualisierung: 2026-01-09
+Letzte Aktualisierung: 2026-01-16
 Maintainer: Norman Herms
 Kontakt: [LinkedIn](https://linkedin.com/in/norman-herms)

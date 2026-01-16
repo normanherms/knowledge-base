@@ -1,14 +1,14 @@
-# Homelab Cluster Architektur (v1.1)
+# Homelab Cluster Architektur (v1.2)
 
 ## Ziel
 
 Das Cluster dient der Souveränität über eigene Daten und Anwendungen.
 Es ermöglicht das Erlernen von Clusterisierung, Containerisierung, Virtualisierung und Netzwerktechnik.
-Im Vordergrund stehen Stabilität, Nachvollziehbarkeit und die Fähigkeit, Anwendungen hochverfügbar zu betreiben.
+Im Vordergrund stehen Stabilität, Nachvollziehbarkeit und die Fähigkeit, Anwendungen im späteren Verlauf hochverfügbar zu betreiben.
 
 ## Aufgabe des Clusters
 
-- Hochverfügbare Bereitstellung von Anwendungen und Daten
+- Bereitstellung von Anwendungen und Daten
 - Fortlaufender Betrieb bei Ausfällen einzelner Komponenten
 - Replizierte Datenhaltung über DRBD
 - Automatisches Scheduling und Wiederherstellung von Diensten
@@ -22,19 +22,19 @@ Im Vordergrund stehen Stabilität, Nachvollziehbarkeit und die Fähigkeit, Anwen
 
 ## Probleme bei aktueller Iteration
 
-- dock-mirror ist aktuell nicht fencebar da kein IPMI Modul
-- es werden aktuell Möglichkeiten geprüft
+- mirror ist aktuell nicht fencebar da kein IPMI Modul
+- aus Hochverfügbar wird höchstens Backup ähnlich
 
 ---
 
 ## Finale Architektur
 
-## Lenovo ThinkCentre M910q (dock-mirror)
+## Lenovo ThinkCentre M910q (mirror)
 
 ### Specs
 
 - Intel i5-7500T
-- 32 GB RAM
+- 32 GB DDR4 RAM
 - 1 TB NVMe SSD
 
 ### Aufgaben
@@ -51,37 +51,11 @@ Im Vordergrund stehen Stabilität, Nachvollziehbarkeit und die Fähigkeit, Anwen
 
 ---
 
-## Dell Optiplex 3070 Micro (dock-edge)
+## Netcup Root Server G12 #1 (prod)
 
 ### Specs
 
-- Intel i5-9500T
-- 32 GB RAM
-- 1 TB NVMe SSD
-
-### Aufgaben
-
-- Heim- / Compute-Node
-- VM-Host
-- Container Host
-- Kein K3s
-- Kein DRBD
-
-### Anwendungen
-
-- Ollama (Gemma3n:4b)
-- Home Assistant (VM)
-- AdGuard Home
-- Anytype
-- Weitere lokale Dienste
-
----
-
-## Netcup Root Server G12 #1 (dock-prod)
-
-### Specs
-
-- AMD EPYC 9645 (4 dedizierte Kerne)
+- AMD EPYC (4 dedizierte Kerne)
 - 8 GB DDR5 ECC
 - 256 GB NVMe SSD
 - 2.5 Gbit/s Netzwerk
@@ -90,7 +64,6 @@ Im Vordergrund stehen Stabilität, Nachvollziehbarkeit und die Fähigkeit, Anwen
 
 - K3s Worker Node
 - DRBD Primary
-- Persistenter Storage im Cluster
 
 ### Anwendungen
 
@@ -99,11 +72,11 @@ Im Vordergrund stehen Stabilität, Nachvollziehbarkeit und die Fähigkeit, Anwen
 
 ---
 
-## Netcup Root Server G12 #2 (dock-load)
+## Netcup Root Server G12 #2 (load)
 
 ### Specs
 
-- AMD EPYC 9645 (4 dedizierte Kerne)
+- AMD EPYC (4 dedizierte Kerne)
 - 8 GB DDR5 ECC
 - 256 GB NVMe SSD
 - 2.5 Gbit/s Netzwerk
@@ -118,12 +91,11 @@ Im Vordergrund stehen Stabilität, Nachvollziehbarkeit und die Fähigkeit, Anwen
 ### Anwendungen
 
 - Keine produktiven Workloads
-- Keine Container
 - Keine VMs
 
 ---
 
-## Netcup VPS nano (dock-dash)
+## Netcup VPS nano (dash)
 
 ### Specs
 
@@ -140,18 +112,5 @@ Im Vordergrund stehen Stabilität, Nachvollziehbarkeit und die Fähigkeit, Anwen
 - Node Exporter für alle Cluster-Nodes
 - Prometheus (kleine Instanz)
 - Grafana
-
----
-
-## Netcup Reserve Node VPS nano
-
-### Rolle
-
-- Keine kritische Funktion
-- Reserve Node (Test / Debug / temporäre Tools)
-
-### Anwendungen
-
-- frei einsetzbar für Experimente
 
 ---

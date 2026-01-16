@@ -85,7 +85,6 @@ Eine dokumentierte Geschichte meiner Homelab-Cluster-Iterationen. Das ist kein E
 
 **Was nicht fertig wurde:**
 
-- SSH Key-only Setup
 - Firewall-Konfiguration
 - Rootless Podman Setup
 - NordVPN Integration
@@ -199,9 +198,9 @@ Eine dokumentierte Geschichte meiner Homelab-Cluster-Iterationen. Das ist kein E
 
 **klare Benennung:**
 
-dock-load
-dock-prod
-dock-mirror (Heimserver)
+load
+prod
+mirror (Heimserver)
 
 **Geplante Roadmap:**
 
@@ -231,10 +230,10 @@ dock-mirror (Heimserver)
 
 **Hardware:**
 
-- dock-prod (Netcup Root VPS)
-- dock-load (Netcup VPS)
-- dock-web (Netcup VPS)
-- dock-mirror (Lenovo M910q)
+- prod (Netcup Root VPS)
+- load (Netcup VPS)
+- web (Netcup VPS)
+- mirror (Lenovo M910q)
 
 **Stack:**
 
@@ -299,10 +298,10 @@ dock-mirror (Heimserver)
 
 **Hardware-Neuverteilung:**
 
-- **Dell Optiplex 3070** → dock-edge (Homelab-Node, KEIN K3s)
-- **Lenovo M910q** → dock-mirror (K3s-Node, dediziert)
-- **2× Netcup Root Server** → dock-prod, dock-load
-- **1× Netcup VPS** → dock-dash (Monitoring)
+- **Dell Optiplex 3070** → edge (Homelab-Node, KEIN K3s)
+- **Lenovo M910q** → mirror (K3s-Node, dediziert)
+- **2× Netcup Root Server** → prod, load
+- **1× Netcup VPS** → dash (Monitoring)
 
 **Runbook erstellt (25. November 2025):**
 
@@ -314,7 +313,7 @@ dock-mirror (Heimserver)
 
 **Status Ende November:**
 
-- dock-edge dokumentiert
+- edge dokumentiert
 - Aber: Dezember = Weihnachtszeit im Handel
 - Setup liegt brach
 
@@ -329,11 +328,11 @@ dock-mirror (Heimserver)
 
 | Host | Hardware | Rolle | Aufgaben |
 |------|----------|-------|----------|
-| **dock-prod** | Netcup Root G12 | K3s Worker, DRBD Primary | OpenCloud, Storage |
-| **dock-load** | Netcup Root G12 | K3s Control Plane, Quorum | API, Ingress, DRBD Quorum |
-| **dock-mirror** | Lenovo M910q | K3s Worker, DRBD Secondary | Worker Pods, Replikation |
-| **dock-edge** | Dell Optiplex 3070 | Home/Compute (KEIN K3s!) | Ollama, HA VM, AdGuard, n8n, Anytype |
-| **dock-dash** | Netcup VPS nano | Monitoring | Prometheus, Grafana |
+| **prod** | Netcup Root G12 | K3s Worker, DRBD Primary | OpenCloud, Storage |
+| **load** | Netcup Root G12 | K3s Control Plane, Quorum | API, Ingress, DRBD Quorum |
+| **mirror** | Lenovo M910q | K3s Worker, DRBD Secondary | Worker Pods, Replikation |
+| **edge** | Dell Optiplex 3070 | Home/Compute (KEIN K3s!) | Ollama, HA VM, AdGuard, n8n, Anytype |
+| **dash** | Netcup VPS nano | Monitoring | Prometheus, Grafana |
 | **synology214** | DS214+ | Backup | Cold Storage |
 
 **Netzwerk:**
@@ -352,8 +351,8 @@ dock-mirror (Heimserver)
 
 - Strikte Rollentrennung
 - K3s nur für OpenCloud
-- dock-edge bewusst AUSSERHALB des Clusters
-- Keine Netzwerk-Kollisionen (libvirt auf dock-edge, nicht im Cluster)
+- edge bewusst AUSSERHALB des Clusters
+- Keine Netzwerk-Kollisionen (libvirt auf edge, nicht im Cluster)
 
 **Dokumentation:**
 
@@ -363,9 +362,7 @@ dock-mirror (Heimserver)
 
 **Status Januar 2026:**
 
-- dock-dash grundlegend bereit
-- Fencing sowie Quorum aktuell nicht umsetzbar da kein Fence Machanismus vorhanden
-- Alles andere: noch nicht deployed
+- Neubau der Infrastruktur
 
 ---
 
@@ -441,5 +438,3 @@ Diese Dokumentation existiert weil:
 5. **Peer Review & Community** - Andere sollen aus meinen Fehlern lernen können
 
 ---
-
-Zuletzt aktualisiert: 11. Januar 2026
