@@ -16,3 +16,7 @@ Dokumentation meines Homelab-Clusters. Enthält aktuelle Architektur, Netzwerkpl
 | `ssh.md`                  | Runbook zum SSH Setup                           |
 
 Die Iterationshistorie dokumentiert auch verworfene Ansätze, um Designentscheidungen nachvollziehbarer zu machen.
+
+## Aktueller Stand
+
+17.01.2026 Baseline auf allen Nodes gesetzt.

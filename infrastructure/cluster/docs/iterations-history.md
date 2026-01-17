@@ -418,13 +418,6 @@ Während der Cluster-Iterationen gelernt:
 3. **Learning by doing (und scheitern)**
    - Jede gescheiterte Iteration hat etwas gelehrt
 
-### Aktueller Status
-
-- **7 Iterationen über ~11 Monate**
-- **Mehrere komplette Neuaufbauten**
-- **Aktuell:** Saubere Architektur definiert, minimales Deployment
-- **Nächster Schritt:** Phase 1 Implementation
-
 ---
 
 ## Warum dieses Dokument existiert
