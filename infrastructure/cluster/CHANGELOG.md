@@ -16,6 +16,13 @@ Das Changelog dient zur Übersicht der Arbeit am Cluster.
 
 ---
 
+## 2026-01-17 - Baseline: Security Layer aktiv
+
+**Was:** nftables, Fail2ban und auditd Baseline Rules aktiviert und geprüft. Host Inventare für alle Nodes erstellt.
+**Wo:** mirror, load, prod, dash
+**Warum:** Einheitlicher Security Standard vor DRBD und K3s Deployment.
+**Auswirkung:** Nur SSH ist extern erreichbar, Fail2ban blockt SSH Bots via nftables, kritische Config Dateien werden auditiert, Baseline ist dokumentiert und vergleichbar.
+
 ## 2026-01-16 - Dokumentation
 
 **Was:** Dokumentation reviewed und erweitert

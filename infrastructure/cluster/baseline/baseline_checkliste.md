@@ -127,12 +127,24 @@ Datei: /etc/ssh/sshd_config.d/10-hardening.conf
 Inhalt:
 
 ```bash
-Port 22
 PermitRootLogin no
 PasswordAuthentication no
 PubkeyAuthentication yes
-DebianBanner no
-AllowUsers <user>
+AuthenticationMethods publickey
+
+KbdInteractiveAuthentication no
+UsePAM yes
+
+X11Forwarding no
+AllowAgentForwarding no
+AllowTcpForwarding no
+
+AuthorizedKeysFile .ssh/authorized_keys
+AllowUsers <User>
+
+LogLevel VERBOSE
+Banner none
+
 ClientAliveInterval 300
 ClientAliveCountMax 2
 ```
@@ -146,7 +158,7 @@ ClientAliveCountMax 2
 
 - Zweite SSH Session offen lassen
 - SSH Konfiguration neu laden
-  systemctl reload ssh
+  systemctl reload sshd
 - Neuer Login Test durchführen
 - Erst danach alte Session schließen
 
@@ -165,22 +177,35 @@ flush ruleset
 
 table inet filter {
 
-  chain input {
-    type filter hook input priority 0; policy drop;
+    chain input {
+        type filter hook input priority 0;
+        policy drop;
 
-    iifname "lo" accept
-    ct state established,related accept
-    ip protocol icmp accept
-    tcp dport 22 accept
-  }
+        # loopback
+        iif lo accept
 
-  chain forward {
-    type filter hook forward priority 0; policy drop;
-  }
+        # established / related
+        ct state established,related accept
 
-  chain output {
-    type filter hook output priority 0; policy accept;
-  }
+        # ICMPv4
+        ip protocol icmp accept
+
+        # ICMPv6 (Pflicht für IPv6!)
+        ip6 nexthdr icmpv6 accept
+
+        # SSH
+        tcp dport 22 accept
+    }
+
+    chain forward {
+        type filter hook forward priority 0;
+        policy drop;
+    }
+
+    chain output {
+        type filter hook output priority 0;
+        policy accept;
+    }
 }
 ```
 
@@ -212,14 +237,13 @@ Inhalt:
 
 ```bash
 [DEFAULT]
-# ignoreip = 127.0.0.1/8 ::1 <DEINE_HEIM_IP>
+bantime  = 72h
+findtime = 10m
+maxretry = 3
+backend  = systemd
 
 [sshd]
 enabled = true
-port = 22
-maxretry = 3
-bantime = 3600
-findtime = 600
 ```
 
 Hinweis:
@@ -239,7 +263,7 @@ Inhalt:
 
 ```bash
 -w /etc/ssh/sshd_config -p wa -k sshd_config
--w /etc/ssh/sshd_config.d/ -p wa -k sshd_config
+-w /etc/ssh/sshd_config.d -p wa -k sshd_config
 
 -w /etc/nftables.conf -p wa -k nftables
 
@@ -268,8 +292,6 @@ net.ipv4.conf.all.send_redirects = 0
 
 net.ipv4.conf.all.accept_source_route = 0
 net.ipv6.conf.all.accept_source_route = 0
-
-net.ipv4.conf.all.log_martians = 1
 
 net.ipv4.ip_forward = 0
 net.ipv6.conf.all.forwarding = 0

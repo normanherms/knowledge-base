@@ -102,9 +102,9 @@ Fencing Mechanik nicht umsetzbar.
 ### Phase 1 (ab Januar)
 
 [x] dash Baseline gesetzt
-[ ] prod Baseline gesetzt
-[ ] mirror Baseline gesetzt
-[ ] load Baseline gesetzt
+[x] prod Baseline gesetzt
+[x] mirror Baseline gesetzt
+[x] load Baseline gesetzt
 [ ] WG-Mesh
 [ ] K3s Control Plane
 [ ] K3s Worker

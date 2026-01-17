@@ -1,7 +1,5 @@
 # Runbook SSH Hardening mit Hardware Token
 
-## Abweichend von der Baseline, wird beizeiten angepasst
-
 ## Scope
 
 SSH Zugriff für Headless Server
@@ -113,6 +111,9 @@ AllowUsers <User>
 
 LogLevel VERBOSE
 Banner none
+
+ClientAliveInterval 300
+ClientAliveCountMax 2
 ```
 
 ---
@@ -128,7 +129,7 @@ sshd -t
 Konfiguration laden:
 
 ```bash
-systemctl reload ssh
+systemctl reload sshd
 ```
 
 ---
@@ -170,6 +171,5 @@ Erwartung:
 
 SSH Zugriff gehärtet
 Hardware Token only
-Produktionsbereit
 
 ---
