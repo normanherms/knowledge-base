@@ -106,10 +106,10 @@ Fencing Mechanik nicht umsetzbar.
 [x] mirror Baseline gesetzt
 [x] load Baseline gesetzt
 [x] WG-Mesh
+[x] Monitoring stabil auf allen Nodes
 [ ] K3s Control Plane
 [ ] K3s Worker
 [ ] OpenCloud Deployment
-[ ] Monitoring stabil
 [ ] Dokumentation komplett
 
 ### Phase 2 (später)

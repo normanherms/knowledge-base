@@ -239,7 +239,7 @@ Kein manueller Eingriff nötig
 
 ---
 
-## Ergebnis
+## Status
 
 - WireGuard Full Mesh aktiv
 - NAT Nodes korrekt integriert

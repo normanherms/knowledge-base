@@ -16,7 +16,15 @@ Das Changelog dient zur Übersicht der Arbeit am Cluster.
 
 ---
 
-## 2026-01-18 - Baseline: WireGuard Full Mesh Netzwerk
+## 2026-01-18 2/2 – Baseline: Monitoring Stack intern abgesichert
+
+**Was:** Aufbau des vollständigen Monitoring Stacks mit Node Exporter auf allen Nodes sowie zentralem Prometheus und lokal gebundenem Grafana. Grafana über gehärteten Nginx Reverse Proxy mit TLS angebunden und Benutzerverwaltung bereinigt.
+**Wo:** mirror, load, prod, dash
+**Warum:** Verlässliche Sichtbarkeit des Systemzustands vor K3s bei minimaler externer Angriffsfläche.
+**Auswirkung:** Alle Nodes liefern Metriken ausschließlich über das WireGuard Netz. Prometheus und Grafana sind nicht direkt öffentlich erreichbar. Monitoring ist rebootfest und reproduzierbar dokumentiert.
+**Fix:** Fehlende nftables Freigabe für Node Exporter über wg0 ergänzt. Grafana Default Admin erkannt und durch dedizierte Benutzer ersetzt. Reverse Proxy, TLS und Fail2ban Absicherung ergänzt.
+
+## 2026-01-18 1/2 - Baseline: WireGuard Full Mesh Netzwerk
 
 **Was:** Aufbau eines vollständigen WireGuard Mesh zwischen allen Cluster Nodes inklusive NAT Node. Einführung von systemd Autostart, restriktiver nftables Freigaben und dokumentiertem Runbook.
 **Wo:** mirror, load, prod, dash
