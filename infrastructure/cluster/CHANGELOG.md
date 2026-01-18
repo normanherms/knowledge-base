@@ -16,7 +16,15 @@ Das Changelog dient zur Übersicht der Arbeit am Cluster.
 
 ---
 
-## 2026-01-18 2/2 – Baseline: Monitoring Stack intern abgesichert
+## 2026-01-18 3/3 – Baseline: Swapfile für Monitoring Node ergänzt
+
+**Was:** Ergänzung eines Swapfiles auf dem Monitoring Node zur Absicherung gegen Speicherengpässe bei Prometheus und Grafana.
+**Wo:** dash
+**Warum:** Der Monitoring Node verfügt über nur 2 GB RAM. Ohne Swap besteht bei Lastspitzen der Ausfall des Monitorings.
+**Auswirkung:** Ein 1 GB Swapfile dient als Notpuffer. Das System degradiert kontrolliert unter Last statt Prozesse hart zu beenden. Monitoring bleibt stabil auch bei temporären Speicherpeaks.
+**Fix:** Fehlender Swap als Baseline Lücke identifiziert und behoben. Swappiness reduziert um Swap nur als Notbremse zu nutzen.
+
+## 2026-01-18 2/3 – Baseline: Monitoring Stack intern abgesichert
 
 **Was:** Aufbau des vollständigen Monitoring Stacks mit Node Exporter auf allen Nodes sowie zentralem Prometheus und lokal gebundenem Grafana. Grafana über gehärteten Nginx Reverse Proxy mit TLS angebunden und Benutzerverwaltung bereinigt.
 **Wo:** mirror, load, prod, dash
@@ -24,7 +32,7 @@ Das Changelog dient zur Übersicht der Arbeit am Cluster.
 **Auswirkung:** Alle Nodes liefern Metriken ausschließlich über das WireGuard Netz. Prometheus und Grafana sind nicht direkt öffentlich erreichbar. Monitoring ist rebootfest und reproduzierbar dokumentiert.
 **Fix:** Fehlende nftables Freigabe für Node Exporter über wg0 ergänzt. Grafana Default Admin erkannt und durch dedizierte Benutzer ersetzt. Reverse Proxy, TLS und Fail2ban Absicherung ergänzt.
 
-## 2026-01-18 1/2 - Baseline: WireGuard Full Mesh Netzwerk
+## 2026-01-18 1/3 - Baseline: WireGuard Full Mesh Netzwerk
 
 **Was:** Aufbau eines vollständigen WireGuard Mesh zwischen allen Cluster Nodes inklusive NAT Node. Einführung von systemd Autostart, restriktiver nftables Freigaben und dokumentiertem Runbook.
 **Wo:** mirror, load, prod, dash
