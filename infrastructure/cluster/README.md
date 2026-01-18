@@ -19,4 +19,5 @@ Die Iterationshistorie dokumentiert auch verworfene Ansätze, um Designentscheid
 
 ## Aktueller Stand
 
+18.01.2026 Wireguard Mesh fertiggestellt.
 17.01.2026 Baseline auf allen Nodes gesetzt.

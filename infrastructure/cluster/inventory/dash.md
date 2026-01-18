@@ -1,4 +1,6 @@
-# Host Inventar vom 17.01.2026
+# Host Inventar vom 18.01.2026
+
+## Ergänzt um WireGuard Cluster Netzwerk
 
 ## Hostname
 
@@ -64,6 +66,11 @@ Monitoring Node für das Staging Cluster. Prometheus Server plus Node Exporter f
   - Startmethode: systemd service
   - Status: running
   - Ports: keine
+- wireguard (wg-quick)
+  - Startmethode: systemd oneshot service
+  - Unit: wg-quick@wg0
+  - Status: enabled, active (exited)
+  - Ports: 51820 UDP (eingehend, restriktiv)
 
 ### Konfigurationen
 
@@ -91,6 +98,10 @@ Monitoring Node für das Staging Cluster. Prometheus Server plus Node Exporter f
   - Haupt Config Pfad: /etc/audit/rules.d/audit.rules
   - Include Pfade: /etc/audit/rules.d/
   - Aktive Dateien: audit.rules und baseline.rules
+- wireguard
+  - Haupt Config Pfad: /etc/wireguard/wg0.conf
+  - Key Pfad: /etc/wireguard/keys/
+  - Autostart Unit: /usr/lib/systemd/system/wg-quick@.service
 
 ### Daten und Logs
 
@@ -129,3 +140,19 @@ Monitoring Node für das Staging Cluster. Prometheus Server plus Node Exporter f
 - Netzwerke
   - Public IPv4: anonymisiert
   - Public IPv6: anonymisiert
+  - Cluster Netz: 10.99.99.0/24 (WireGuard)
+
+### Netzwerk
+
+#### Cluster Netzwerk
+
+- Technologie: WireGuard
+- Interface: wg0
+- Cluster Netz: 10.99.99.0/24
+- Autostart: wg-quick@wg0 enabled
+
+#### Host-spezifisch
+
+- Interne IP: 10.99.99.4
+- NAT Rolle: nein
+- Öffentlicher Endpoint: ja

@@ -16,6 +16,14 @@ Das Changelog dient zur Übersicht der Arbeit am Cluster.
 
 ---
 
+## 2026-01-18 - Baseline: WireGuard Full Mesh Netzwerk
+
+**Was:** Aufbau eines vollständigen WireGuard Mesh zwischen allen Cluster Nodes inklusive NAT Node. Einführung von systemd Autostart, restriktiver nftables Freigaben und dokumentiertem Runbook.
+**Wo:** mirror, load, prod, dash
+**Warum:** Sichere, konsistente und vom Public Internet entkoppelte Cluster Kommunikation als Grundlage für DRBD, K3s und weitere Dienste.
+**Auswirkung:** Interne Cluster Kommunikation läuft ausschließlich über das WireGuard Netz. Öffentliche Abhängigkeiten sind minimiert. Netzwerk ist rebootfest, nachvollziehbar und reproduzierbar.
+**Fix:** NAT Fallstrick beim mirror Node identifiziert und durch Anpassung der nftables Regeln (state new für WireGuard UDP) behoben.
+
 ## 2026-01-17 - Baseline: Security Layer aktiv
 
 **Was:** nftables, Fail2ban und auditd Baseline Rules aktiviert und geprüft. Host Inventare für alle Nodes erstellt.

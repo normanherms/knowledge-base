@@ -1,4 +1,6 @@
-# Host Inventar vom 17.01.2026
+# Host Inventar vom 18.01.2026
+
+## Ergänzt um WireGuard Cluster Netzwerk
 
 ## Hostname
 
@@ -56,6 +58,11 @@ DRBD Node für blockbasiertes Storage Sync und K3s Worker Node für Cluster Work
   - Startmethode: systemd service
   - Status: running
   - Ports: keine
+- wireguard (wg-quick)
+  - Startmethode: systemd oneshot service
+  - Unit: wg-quick@wg0
+  - Status: enabled, active (exited)
+  - Ports: 51820 UDP (eingehend, restriktiv)
 
 ### Konfigurationen
 
@@ -79,6 +86,10 @@ DRBD Node für blockbasiertes Storage Sync und K3s Worker Node für Cluster Work
   - Haupt Config Pfad: /etc/audit/rules.d/audit.rules
   - Include Pfade: /etc/audit/rules.d/
   - Aktive Dateien: audit.rules und baseline.rules
+- wireguard
+  - Haupt Config Pfad: /etc/wireguard/wg0.conf
+  - Key Pfad: /etc/wireguard/keys/
+  - Autostart Unit: /usr/lib/systemd/system/wg-quick@.service
 
 ### Daten und Logs
 
@@ -121,3 +132,19 @@ DRBD Node für blockbasiertes Storage Sync und K3s Worker Node für Cluster Work
   - LAN IPv4: anonymisiert
   - WLAN IPv4: anonymisiert
   - IPv6: aktiv im Heimnetz
+  - Cluster Netz: 10.99.99.0/24 (WireGuard)
+
+### Netzwerk
+
+#### Cluster Netzwerk
+
+- Technologie: WireGuard
+- Interface: wg0
+- Cluster Netz: 10.99.99.0/24
+- Autostart: wg-quick@wg0 enabled
+
+#### Host-spezifisch
+
+- Interne IP: 10.99.99.3
+- NAT Rolle: ja
+- Öffentlicher Endpoint: nein

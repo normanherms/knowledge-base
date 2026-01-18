@@ -105,7 +105,7 @@ Fencing Mechanik nicht umsetzbar.
 [x] prod Baseline gesetzt
 [x] mirror Baseline gesetzt
 [x] load Baseline gesetzt
-[ ] WG-Mesh
+[x] WG-Mesh
 [ ] K3s Control Plane
 [ ] K3s Worker
 [ ] OpenCloud Deployment
