@@ -70,6 +70,7 @@ Die Baseline gilt als abgeschlossen, wenn:
 ## Phase 2: Storage Basis
 
 - Partitionen anlegen oder anpassen
+- Swap partition nicht vergessen!
 - fstab Einträge schreiben für:
   - Root
   - Zusätzliche Datenpartitionen

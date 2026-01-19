@@ -1,6 +1,6 @@
-# Host Inventar vom 18.01.2026
+# Host Inventar vom 19.01.2026
 
-## Ergänzt um WireGuard Cluster Netzwerk
+Diese Dokumentation ist bereinigt und enthält keine sensiblen oder identifizierenden Daten.
 
 ## Hostname
 
@@ -44,7 +44,7 @@ DRBD Master Node für blockbasiertes Storage Sync und K3s Worker Node für Clust
   - Ports: keine
 - nftables
   - Startmethode: systemd service
-  - Status: active exited
+  - Status: active (exited)
   - Ports: keine
 - rsyslog
   - Startmethode: systemd service
@@ -67,6 +67,10 @@ DRBD Master Node für blockbasiertes Storage Sync und K3s Worker Node für Clust
   - Unit: wg-quick@wg0
   - Status: enabled, active (exited)
   - Ports: 51820 UDP (eingehend, restriktiv)
+- node_exporter
+  - Startmethode: systemd service
+  - Status: running
+  - Ports: 9100 TCP (nur über Cluster Netz)
 
 ### Konfigurationen
 
@@ -94,6 +98,10 @@ DRBD Master Node für blockbasiertes Storage Sync und K3s Worker Node für Clust
   - Haupt Config Pfad: /etc/wireguard/wg0.conf
   - Key Pfad: /etc/wireguard/keys/
   - Autostart Unit: /usr/lib/systemd/system/wg-quick@.service
+- node_exporter
+  - Haupt Config Pfad: systemd unit
+  - Include Pfade: /etc/systemd/system/
+  - Aktive Dateien: node_exporter.service
 
 ### Daten und Logs
 

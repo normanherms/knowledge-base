@@ -1,6 +1,6 @@
-# Host Inventar vom 18.01.2026
+# Host Inventar vom 19.01.2026
 
-## Ergänzt um WireGuard Cluster Netzwerk
+Diese Dokumentation ist bereinigt und enthält keine sensiblen oder identifizierenden Daten.
 
 ## Hostname
 
@@ -16,6 +16,13 @@ Monitoring Node für das Staging Cluster. Prometheus Server plus Node Exporter f
 - Kernel: 6.12.63+deb13-amd64
 - Standort: Netcup VPS KVM Server nano G11s
 - Uptime Erwartung: 24/7
+
+### Ressourcen
+
+- RAM: 2 GB
+- Swap: 1 GB Swapfile (`/swapfile`)
+- Swappiness: 10
+- Zweck: Stabilitätspuffer für Monitoring Dienste bei Lastspitzen
 
 ### Zugriff
 
@@ -45,11 +52,23 @@ Monitoring Node für das Staging Cluster. Prometheus Server plus Node Exporter f
 - node_exporter
   - Startmethode: systemd service
   - Status: running
-  - Ports: 9100 TCP nur localhost
+  - Ports: 9100 TCP gebunden an WireGuard IP
 - prometheus
   - Startmethode: systemd service
   - Status: running
   - Ports: 9090 TCP nur localhost
+- grafana-server
+  - Startmethode: systemd service
+  - Status: running
+  - Ports: 3000 TCP auf localhost
+- nginx
+  - Startmethode: systemd service
+  - Status: running
+  - Ports: 443 TCP öffentlich
+- nftables
+  - Startmethode: systemd service
+  - Status: active (exited)
+  - Ports: gesteuert über Ruleset
 - rsyslog
   - Startmethode: systemd service
   - Status: running
@@ -90,6 +109,22 @@ Monitoring Node für das Staging Cluster. Prometheus Server plus Node Exporter f
   - Haupt Config Pfad: systemd unit
   - Include Pfade: /etc/systemd/system/
   - Aktive Dateien: node_exporter.service
+- grafana-server
+  - Haupt Config Pfad: /etc/grafana/grafana.ini
+  - Include Pfade: /etc/grafana/
+  - Aktive Dateien: grafana.ini
+- rsyslog
+  - Haupt Config Pfad: /etc/rsyslog.conf
+  - Include Pfade: /etc/rsyslog.d/
+  - Aktive Dateien: 10-dash.conf
+- nginx
+  - Haupt Config Pfad: /etc/nginx/nginx.conf
+  - Include Pfade: /etc/nginx/conf.d/ und /etc/nginx/sites-enabled/
+  - Aktive Dateien: sites-enabled/grafana.domain.io
+- nftables
+  - Haupt Config Pfad: /etc/nftables.conf
+  - Include Pfade: optional /etc/nftables.d/
+  - Aktive Dateien: nftables.conf
 - fail2ban
   - Haupt Config Pfad: /etc/fail2ban/jail.local
   - Include Pfade: /etc/fail2ban/jail.d/
@@ -102,6 +137,16 @@ Monitoring Node für das Staging Cluster. Prometheus Server plus Node Exporter f
   - Haupt Config Pfad: /etc/wireguard/wg0.conf
   - Key Pfad: /etc/wireguard/keys/
   - Autostart Unit: /usr/lib/systemd/system/wg-quick@.service
+- TLS
+  - Tools: certbot
+  - Integration: nginx plugin
+  - Zertifikat für: grafana.domain.io
+  - Zertifikatspfad: /etc/letsencrypt/
+- restic
+  - Baseline Repo: /data/restic-baseline
+  - Daily Repo: /data/restic-daily
+  - Passwortdateien: /root/.restic-*-pass
+  - Backup Script: /usr/local/sbin/restic-daily-monitoring.sh
 
 ### Daten und Logs
 
@@ -129,6 +174,9 @@ Monitoring Node für das Staging Cluster. Prometheus Server plus Node Exporter f
   - systemd-tmpfiles-clean.timer
 - Externe Trigger
   - keine
+- Zertifikatserneuerung
+  - Mechanismus: certbot systemd timer
+  - Status: aktiv
 
 ### Abhängigkeiten
 

@@ -1,7 +1,6 @@
-# Host Inventar vom 18.01.2026
+# Host Inventar vom 19.01.2026
 
-## Ergänzt um WireGuard Cluster Netzwerk
-
+Diese Dokumentation ist bereinigt und enthält keine sensiblen oder identifizierenden Daten.
 
 ## Hostname
 
@@ -45,7 +44,7 @@ K3s Control Plane Node für das Cluster. Zusätzlich DRBD Quorum Node zur Stabil
   - Ports: keine
 - nftables
   - Startmethode: systemd service
-  - Status: active exited
+  - Status: active (exited)
   - Ports: keine
 - rsyslog
   - Startmethode: systemd service
@@ -68,6 +67,10 @@ K3s Control Plane Node für das Cluster. Zusätzlich DRBD Quorum Node zur Stabil
   - Unit: wg-quick@wg0
   - Status: enabled, active (exited)
   - Ports: 51820 UDP (eingehend, restriktiv)
+- node_exporter
+  - Startmethode: systemd service
+  - Status: running
+  - Ports: 9100 TCP gebunden an WireGuard IP
 
 ### Konfigurationen
 
@@ -95,6 +98,10 @@ K3s Control Plane Node für das Cluster. Zusätzlich DRBD Quorum Node zur Stabil
   - Haupt Config Pfad: /etc/wireguard/wg0.conf
   - Key Pfad: /etc/wireguard/keys/
   - Autostart Unit: /usr/lib/systemd/system/wg-quick@.service
+- node_exporter
+  - Haupt Config Pfad: systemd unit
+  - Include Pfade: /etc/systemd/system/
+  - Aktive Dateien: node_exporter.service
 
 ### Daten und Logs
 
