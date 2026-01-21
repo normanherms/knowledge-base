@@ -6,7 +6,7 @@ Das Changelog dient zur Übersicht der Arbeit am Cluster.
 
 *Template:*
 
-### YYYY-MM-DD - Titel
+## YYYY-MM-DD - Titel
 
 **Was:** Beschreibung der Änderung
 **Wo:** Welcher Server
