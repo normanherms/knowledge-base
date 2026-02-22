@@ -107,8 +107,8 @@ Fencing Mechanik nicht umsetzbar.
 [x] load Baseline gesetzt
 [x] WG-Mesh
 [x] Monitoring stabil auf allen Nodes
-[ ] K3s Control Plane
-[ ] K3s Worker
+[x] K3s Control Plane
+[x] K3s Worker
 [ ] OpenCloud Deployment
 [ ] Dokumentation komplett
 
