@@ -17,6 +17,17 @@ Das Changelog dient zur Übersicht der Arbeit am Cluster.
 
 ---
 
+## 2026-02-24 – HTTPS Redirect, Microblog Feed, Cluster Cleanup
+
+**Was:** HTTP -> HTTPS Redirect via Traefik Middleware. Portfolio Website überarbeitet (Dark/Light Mode, DE/EN Toggle, ASCII Header). Microblog Feed unter `/feed` hinzugefügt. Cluster bereinigt, Node Labels gesetzt.
+**Wo:** load, zimtlab, mirror
+**Warum:** Port 80 lieferte 404 statt Redirect. Website iteriert, Feed als einfache Markdown-Pipeline ergänzt.
+**Auswirkung:** Push auf `main` deployt Portfolio und Feed. Neue Posts als `.md` in `src/pages/posts/`. revisionHistoryLimit 3 gesetzt.
+**Fix:** `k8s/tls.yaml` entfernt. Middleware `redirect-https` und Ingress `portfolio-http` ergänzt. Verwaiste ReplicaSets gelöscht. Node Labels auf prod und mirror gesetzt. `Astro.glob` → `import.meta.glob`.
+**Referenz:** `infrastructure/cluster/runbooks/portfolio_deployment.md`
+
+---
+
 ## 2026-02-23 – Portfolio CI/CD Pipeline deployed
 
 **Was:** Astro Portfolio Website mit GitLab CI/CD Pipeline, Kaniko Image Build, Deployment auf K3s, Traefik Ingress vorbereitet für `portfolio.dockseed.io`
