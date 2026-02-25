@@ -17,6 +17,17 @@ Das Changelog dient zur Übersicht der Arbeit am Cluster.
 
 ---
 
+## 2026-02-25 – K3s Cluster Update v1.34.3 → v1.35.1, Debian Kernel Update
+
+**Was:** K3s Rolling Update auf allen drei Nodes. Debian Kernel Update auf 6.12.73 (prod, mirror, load). Traefik HelmChartConfig auf HTTP-01 ACME Challenge umgestellt. nftables Config bereinigt.
+**Wo:** load, prod, mirror
+**Warum:** v1.35.1 verfügbar. Debian Security Updates ausstehend. Update Mechanik kennenlernen und verbessern.
+**Auswirkung:** Theoretisch wenig Downtime des Portfolios. Aber Pod-Netzwerk unterbrochen während load neu konfiguriert wurde (flannel-iface fehlte wegen fehlender Startparameter). Let's Encrypt Cert neu ausgestellt.
+**Fix:** k3s auf load ohne `--flannel-iface wg0` gestartet → flannel nutzte eth0 statt wg0 → Pod-Netzwerk zwischen Nodes ausgefallen. Neuinstall mit vollständigen Parametern behoben. TLS-ALPN Challenge auf HTTP-01 umgestellt da acme.json leer war. `secretName: portfolio-tls` aus Ingress entfernt.
+**Referenz:** `infrastructure/cluster/runbooks/k3s_update.md`
+
+---
+
 ## 2026-02-24 – HTTPS Redirect, Microblog Feed, Cluster Cleanup
 
 **Was:** HTTP -> HTTPS Redirect via Traefik Middleware. Portfolio Website überarbeitet (Dark/Light Mode, DE/EN Toggle, ASCII Header). Microblog Feed unter `/feed` hinzugefügt. Cluster bereinigt, Node Labels gesetzt.
